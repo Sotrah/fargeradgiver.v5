@@ -1,0 +1,277 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 246, 249, 255;
+  --background-end-rgb: 255, 255, 255;
+
+}
+
+/* Grid styling stuff, big and then small */
+@media (min-width: 1024px) {
+  .main-grid{
+    display: grid;
+    grid-template-columns: 2fr 3fr 2fr;
+    grid-template-rows: auto minmax(6em, auto);
+    gap: 0.75rem;
+  }
+}
+@media (max-width: 1023px) {
+  .main-grid{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 4fr auto 5fr;
+    gap: 0.75rem;
+  }
+}
+
+/* For skjermer større enn 1024px */
+@media (min-width: 1024px) {
+  .main-container, .c-site-header__top .container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1340px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+@media (max-width: 1023px) {
+  .main-container, .c-site-header__top .container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 450px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+.background-image-container {
+  background-image: url('https://jernia-li4h9pufi-jernia.vercel.app/_next/static/media/desktop.4bafc749.svg');
+  background-position: right;
+  background-repeat: no-repeat;
+  position: relative;
+}
+@media (max-width: 1023px) {
+  .background-image-container {
+    background-size: 60%;
+  }
+}
+
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+          to bottom,
+          transparent,
+          rgb(var(--background-end-rgb))
+  )
+  rgb(var(--background-start-rgb));
+}
+
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+.c-site-header {
+  background-color: #003065;
+  position: relative;
+  z-index: 99;
+  align-items: center;
+}
+
+@media (max-width: 1023px) {
+  .header-container{
+    display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  height: 126px;
+  }
+
+  .c-site-header__top {
+    max-width: 720px;
+    position: relative;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+
+  .container {
+    padding-left: 15px;
+    padding-right: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 15px;
+  }
+
+  .cls-1{fill:white;}
+  .cls-2{fill:#fa8700;}
+
+  .searchbar{
+    order: 3;
+    height: 40px;
+  }
+
+}
+.dummy-button-container{
+  width: 50%;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5em;
+  
+}
+.dummy-button{
+  
+  height: 100%;
+  aspect-ratio: 1;
+}
+
+@media (min-width: 1024px) {
+  .c-site-header__top {
+    background-color: #FFFFFF;
+    padding-bottom: 25px;
+    padding-top: 25px;
+    position: relative;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+
+  .container {
+    height: 50px;
+    margin-left: 30px;
+    margin-right: 30px;
+    max-width: calc(100% - 60px);
+    padding-left: 15px;
+    padding-right: 15px;
+    display: flex;
+    justify-content: space-around;
+    gap: 15px;
+  }
+
+  .cls-1{fill:rgb(1, 67, 142);}
+  .cls-2{fill:#fa8700;}
+
+  .jernia-navigation-container{
+    height: 72px;
+  }
+}
+
+.mm-page{
+  box-sizing: border-box;
+  position: relative;
+}
+.mm-slideout{
+  transition: -webkit-transform .4s ease;
+  transition: transform .4s ease;
+  transition: transform .4s ease, -webkit-transform .4s ease;
+  transition: transform .4s ease,-webkit-transform .4s ease;
+  z-index: 1;
+}
+#__next{
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  font-family: Inter,ui-sans-serif,system-ui,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
+  font-feature-settings: normal;
+  font-variation-settings: normal;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.bg-jernia-farge{
+  background-color: rgb(205, 188, 148);
+}
+
+.bg-jernia-nettside{
+  background-color: rgb(246, 249, 255);
+}
+
+
+.bg-jernia-image {
+  background-image: url(https://jernia-etp3ndp86-jernia.vercel.app/_next/static/media/mobile.89ded607.svg);
+  background-position: right top;
+  background-repeat: no-repeat;
+  background-size: auto 200%;
+}
+#__next .h-\[calc\(100\%-32px\)\] {
+  height: 250%;
+}
+#__next .w-full {
+  width: 100%;
+}
+#__next .bg-primary-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(245, 249, 255/var(--tw-bg-opacity));
+}
+
+
+
+/*Tekst på valgt farge*/
+.colorInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.colorName {
+  font-size: 1em;
+  font-weight: bold;
+}
+.colorCode {
+  font-size: 0.75em;
+}
+
+@media (min-width: 600px) {
+  .colorName {
+    font-size: 18px;
+  }
+  .colorCode {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .colorName {
+    font-size: 14px;
+  }
+  .colorCode {
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 1292px) {
+  .colorName {
+    font-size: 18px;
+  }
+  .colorCode {
+    font-size: 16px;
+  }
+}
+
+/*Høyde på fargevelgeren*/
+.colorPickerHeight{
+}
+
+/* Info-tekst på store skjermer */
+@media (min-width:1025px) {
+  .mobile-text {
+    display: none;
+  }
+}
+
+/* Info-tekst på små skjermer */
+@media (max-width: 1024px) {
+  .desktop-text {
+    display: none;
+  }
+}
