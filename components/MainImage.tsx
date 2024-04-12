@@ -17,9 +17,9 @@ const MainImage: React.FC<{
 
 
     return (
-        <div>
+        <div className='w-full h-full'>
             {showSpinner && (
-                <div className="absolute inset-0 flex items-center justify-center z-20">
+                <div className="absolute inset-0 flex items-center justify-center z-30">
                     <ScaleLoader
                         color="#000000"
                         speedMultiplier={0.5}
@@ -31,7 +31,7 @@ const MainImage: React.FC<{
             <div className={`${showSpinner ? "opacity-50" : ""} w-full h-full relative`}>
                 {/* CldImage is documented here: https://next.cloudinary.dev/cldimage/configuration
                         If there is an image and a selectedColor selected, transform it with Recolor */}
-                <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center z-10">
+                <div className={`absolute top-0 left-0 w-full h-full flex justify-center items-center z-20 rounded-md ${showSpinner ? "opacity-0" : ""}`}>
                     {selectedImage && selectedColor && (
                         <CldImage
                             placeholder="empty"
@@ -40,13 +40,13 @@ const MainImage: React.FC<{
                             height='400'
                             src={selectedImage}
                             alt="Uploaded image"
-                            className="rounded-md"
                             sizes="100vw"
+                            className="rounded-md"
                             recolor={[`${recolorOption}`, formattedHex]}
                         />
                     )}
                 </div>
-                <div className=" flex justify-center items-center z-0">
+                <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center z-10 rounded-md">
                     {selectedImage &&(
                         <CldImage
                             placeholder="empty"
@@ -59,10 +59,13 @@ const MainImage: React.FC<{
                             height='400'
                             src={selectedImage}
                             alt="Uploaded image"
-                            className="rounded-md"
                             sizes="100vw"
+                            className="rounded-md"
                         />
                     )}
+                </div>
+                <div className="flex justify-center items-center z-0 bg-gray-300 rounded-md aspect-[4/3]">
+                    <p>Pick image pick color dummy</p>
                 </div>
             </div>
         </div>
