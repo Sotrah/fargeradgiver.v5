@@ -46,8 +46,8 @@ const ImageGridCard: React.FC<ImageGridCardProps> = ({ onPictureSelect }) => {
                         onClick={() => handleImageClick(index)}
                     >
                         <CloudinaryWrapper
-                            width={500}
-                            height={500}
+                            width={400}
+                            height={300}
                             src={src}
                             alt={`Image ${index + 1}`}
                             layout="responsive"
