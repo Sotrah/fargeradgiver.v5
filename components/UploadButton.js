@@ -22,7 +22,9 @@ const UploadButton = ({ onUploadSuccess }) => {
             options={{
                 sources: ['local'],
                 multiple: false,
-                autoMinimize: true,
+                autoMinimize: false,
+                clientAllowedFormats: ['avif', 'bmp', 'flif', 'heif', 'heic', 'jpg', 'jpeg', 'jp2', 'wdp', 'jxr', 'hdp', 'jxl', 'png', 'svg', 'tga', 'tif', 'tiff', 'webp'],
+                resourceType: 'image',  
                 cropping: true,
                 showSkipCropButton: false,
                 croppingAspectRatio: 1.3333,
