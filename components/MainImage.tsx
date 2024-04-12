@@ -6,12 +6,12 @@ import CldImage from "../components/CldImage";
 
 const MainImage: React.FC<{
     selectedColor: ColorType | null,
-    imageToTransform: String | null,
+    selectedImage: String | null,
     loading: boolean,
     setLoading: (loading: boolean) => void,
     recolorOption: string,
     formattedHex: string | null
-} > = ({ selectedColor, imageToTransform, loading = false, setLoading, recolorOption, formattedHex }) => {
+} > = ({ selectedColor, selectedImage, loading = false, setLoading, recolorOption, formattedHex }) => {
 
     const showSpinner = useSpinDelay(loading, { delay: 125, minDuration: 500 });
 
@@ -32,13 +32,13 @@ const MainImage: React.FC<{
                 {/* CldImage is documented here: https://next.cloudinary.dev/cldimage/configuration
                         If there is an image and a selectedColor selected, transform it with Recolor */}
                 <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center z-10">
-                    {imageToTransform && selectedColor && (
+                    {selectedImage && selectedColor && (
                         <CldImage
                             placeholder="empty"
                             onLoad={() => setLoading(false)}
-                            width='1024'
-                            height='1024'
-                            src={imageToTransform}
+                            width='600'
+                            height='400'
+                            src={selectedImage}
                             alt="Uploaded image"
                             className="rounded-md"
                             sizes="100vw"
@@ -47,7 +47,7 @@ const MainImage: React.FC<{
                     )}
                 </div>
                 <div className=" flex justify-center items-center z-0">
-                    {imageToTransform &&(
+                    {selectedImage &&(
                         <CldImage
                             placeholder="empty"
                             onLoad={() =>
@@ -55,9 +55,9 @@ const MainImage: React.FC<{
                                 setLoading(false)}
                             }
                             }
-                            width='1024'
-                            height='1024'
-                            src={imageToTransform}
+                            width='600'
+                            height='400'
+                            src={selectedImage}
                             alt="Uploaded image"
                             className="rounded-md"
                             sizes="100vw"

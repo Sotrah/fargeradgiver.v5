@@ -3,13 +3,11 @@ import CloudinaryWrapper from "./CldImage";
 import React, { useState } from 'react';
 import UploadButton from "../components/UploadButton";
 
-// Define the type for the component props
-interface ImageGridCardProps {
-    onPictureSelect: (url: string) => void; // Assuming onPictureSelect expects a string and doesn't return anything
-}
-
-const ImageGridCard: React.FC<ImageGridCardProps> = ({ onPictureSelect }) => {
-    const [selected, setSelected] = useState<number>(0);
+const ImageGridCard: React.FC<{
+    selectedImage: String | null,
+    onImageSelect: (image: String | null) => void
+    } > = ({ selectedImage, onImageSelect }) => {
+    const [selectedGridIndex, setSelectedGridIndex] = useState<number | null>(null);
 
     const [images, setImages] = useState<string[]>([
         'https://res.cloudinary.com/dv4ydb3qf/image/upload/v1712314352/qrkelyfikaa03biiaedn_od2u99.jpg',
@@ -20,10 +18,18 @@ const ImageGridCard: React.FC<ImageGridCardProps> = ({ onPictureSelect }) => {
     ]);
 
 
-    const handleImageClick = (index: number): void => {
-        setSelected(index);
-        console.log("Selected image: " + images[index]);
-        onPictureSelect(images[index]); // "Feed" the selected picture url to the parent component
+    const handleImageClick = (clickedIndex: number): void => {
+        if (clickedIndex === selectedGridIndex) {
+            setSelectedGridIndex(null);
+            onImageSelect(null);
+        }
+        else {
+            setSelectedGridIndex(clickedIndex);
+            console.log("Selected image: " + images[clickedIndex]);
+            onImageSelect(images[clickedIndex]);
+            
+        }
+
     };
 
     // Function to handle the state update in the parent component
@@ -31,9 +37,8 @@ const ImageGridCard: React.FC<ImageGridCardProps> = ({ onPictureSelect }) => {
         const updatedImages = images
         updatedImages[5] = result; // Add the uploaded photo to the images array at index 5
         setImages(updatedImages);
-        setSelected(5); // uploaded photo always in same spot
         console.log(result);
-        onPictureSelect(result); // "Feed" the selected picture url to the parent component
+        handleImageClick(5); // "click" (select) the uploaded image
     };
 
     return (
@@ -42,7 +47,7 @@ const ImageGridCard: React.FC<ImageGridCardProps> = ({ onPictureSelect }) => {
                 {images.map((src, index) => (
                     <div
                         key={index}
-                        className={` rounded-lg flex items-center overflow-hidden relative border-2 ${selected === index ? 'border-black' : 'border-transparent'}  hover:border-gray-500`}
+                        className={` rounded-lg flex items-center overflow-hidden relative border-2 ${selectedGridIndex === index ? 'border-black' : 'border-transparent'}  hover:border-gray-500`}
                         onClick={() => handleImageClick(index)}
                     >
                         <CloudinaryWrapper
