@@ -8,6 +8,9 @@ const ImageGridCard: React.FC<{
     onImageSelect: (image: String | null) => void
     } > = ({ selectedImage, onImageSelect }) => {
     const [selectedGridIndex, setSelectedGridIndex] = useState<number | null>(null);
+    const maxImageLength = 9;
+    const initialUploadImageSlot = 5; // The first index to upload an image to
+    let uploadImageSlot = initialUploadImageSlot; // The current index to upload an image to
 
     const [images, setImages] = useState<string[]>([
         'https://res.cloudinary.com/dv4ydb3qf/image/upload/v1712314352/qrkelyfikaa03biiaedn_od2u99.jpg',
@@ -27,18 +30,25 @@ const ImageGridCard: React.FC<{
             setSelectedGridIndex(clickedIndex);
             console.log("Selected image: " + images[clickedIndex]);
             onImageSelect(images[clickedIndex]);
-            
         }
 
     };
 
     // Function to handle the state update in the parent component
     const handleUploadSuccess = (result: string): void => {
+        
+        // This loops which slot to upload the next image to between the initial value and the max
         const updatedImages = images
-        updatedImages[5] = result; // Add the uploaded photo to the images array at index 5
+        updatedImages[uploadImageSlot] = result; // Add the uploaded photo to the images array at the current upload slot
         setImages(updatedImages);
         console.log(result);
-        handleImageClick(5); // "click" (select) the uploaded image
+        handleImageClick(uploadImageSlot); // "click" (select) the uploaded image
+        uploadImageSlot += 1;
+        if (uploadImageSlot >= maxImageLength) {
+            console.log("Resetting upload slot to " + initialUploadImageSlot);
+            uploadImageSlot = initialUploadImageSlot;
+        }
+        console.log("Next upload slot: " + uploadImageSlot);
     };
 
     return (
@@ -60,7 +70,7 @@ const ImageGridCard: React.FC<{
                         />
                     </div>
                 ))}
-                {images.length < 6 && (
+                {images.length < maxImageLength && (
                     <div className="w-full rounded-lg border-dashed border-2 border-gray-400 flex items-center justify-center">
                         <p></p>
                     </div>
