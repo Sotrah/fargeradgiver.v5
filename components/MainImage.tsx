@@ -13,7 +13,7 @@ const MainImage: React.FC<{
     formattedHex: string | null
 } > = ({ selectedColor, imageToTransform, loading = false, setLoading, recolorOption, formattedHex }) => {
 
-    const showSpinner = useSpinDelay(loading, { delay: 300, minDuration: 700 });
+    const showSpinner = useSpinDelay(loading, { delay: 125, minDuration: 500 });
 
 
     return (
