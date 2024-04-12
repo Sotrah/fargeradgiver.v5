@@ -4,6 +4,7 @@ import 'instantsearch.css/themes/satellite.css';
 import {Configure, InstantSearch, SearchBox, RefinementList, connectStateResults} from 'react-instantsearch-dom';
 import {HitProps} from "@/components/ColorSearchHit";
 import {SearchResults} from "algoliasearch-helper";
+import {CustomInfiniteHits} from "@/components/ColorSearchInfiniteHits";
 
 interface CustomResultsProps{
     searchState: any;
@@ -37,16 +38,15 @@ export const Search: React.FC<SearchProps> = ({ onResultsUpdate }) => {
     const toggleCollapse = () => setIsCollapsed(!isCollapsed); // Toggle function
     return (
         <InstantSearch searchClient={searchClient} indexName="colours_dump">
-            <Configure hitsPerPage={200}/>
+             <Configure hitsPerPage={30}/>
             <CustomResults onResultsUpdate={onResultsUpdate}/>
 
             <div className="grid grid-cols-4 gap-2">
                 <div className="col-span-3">
             <SearchBox translations={{ placeholder: 'Søk her' }}/>
                 </div>
-
             <button onClick={toggleCollapse} className="text-sm lg:text-xs xl:text-sm border-2 bg-white hover:border-gray-500 rounded-lg">
-                {isCollapsed ? 'Vis filter' : 'Gjem filter'}
+                {isCollapsed ? 'Vis filter' : 'Skjul filter'}
             </button>
 
             {/* Always render the RefinementList, but control its visibility with a CSS class */}
@@ -56,6 +56,8 @@ export const Search: React.FC<SearchProps> = ({ onResultsUpdate }) => {
             </div>
             </div>
             </div>
+            <CustomInfiniteHits onResultsUpdate={onResultsUpdate}/>
+
 
         </InstantSearch>
     );
