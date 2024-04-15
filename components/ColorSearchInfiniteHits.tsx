@@ -1,49 +1,35 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { connectInfiniteHits } from 'react-instantsearch-dom';
-import ColorCard from "@/components/ColorCard";
-import { HitProps } from "@/components/ColorSearchHit";
-import ColorPicker from "@/components/ColorPicker"; // Ensure this import path is correct
+import ColorCard from '@/components/ColorCard';
+import { ColorType } from "@/components/ColorType"; // Importing the necessary type
 
-// Extend the props interface to include onResultsUpdate
-interface InfiniteHitsProps {
-    hits: HitProps[];
-    hasMore: boolean;
-    refineNext: () => void;
-    onResultsUpdate: (hits: HitProps[]) => void; // Add this line
-}
-
-const InfiniteHits: React.FC<InfiniteHitsProps> = ({ hits, hasMore, refineNext, onResultsUpdate }) => {
-    const sentinel = useRef(null);
-
-    useEffect(() => {
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting && hasMore) {
-                    refineNext();
-                }
-            });
-        }, { rootMargin: '150px' });
-
-        if (sentinel.current) {
-            observer.observe(sentinel.current);
+const CustomInfiniteHits = ({
+                                hits,
+                                hasMore,
+                                refineNext,
+                                handleColorClick,
+                                selectedColor,
+                                setSelectedColor // Assuming state management is external
+                            }) => {
+    const onScroll = event => {
+        const { scrollTop, clientHeight, scrollHeight } = event.currentTarget;
+        if (scrollHeight - scrollTop <= clientHeight) {
+            hasMore && refineNext();
         }
-
-        return () => observer.disconnect();
-    }, [hasMore, refineNext]);
-
-    // Call onResultsUpdate with the current hits
-    useEffect(() => {
-        onResultsUpdate(hits);
-    }, [hits, onResultsUpdate]);
+    };
 
     return (
-        <div>
-            {hits.map(hit => (
-                <ColorPicker key={hit.hex} colorItem={hit} />
+        <div onScroll={onScroll} style={{ overflowY: 'auto', height: '400px' }} className="grid grid-cols-3 gap-3">
+             {hits.map(hit => (
+                 <ColorCard
+                     key={hit.objectID}
+                     colorItem={{ ...hit, hex: hit.hex.startsWith('#') ? hit.hex.slice(0) : hit.selectedColor.hex }}
+                     handleColorClick={() => handleColorClick(hit, selectedColor, setSelectedColor)}
+                     selectedColor={selectedColor}
+                 />
             ))}
-            <div ref={sentinel} style={{ textAlign: ''}}></div>
         </div>
     );
 };
 
-export const CustomInfiniteHits = connectInfiniteHits(InfiniteHits);
+export default connectInfiniteHits(CustomInfiniteHits);
