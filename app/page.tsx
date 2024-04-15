@@ -202,7 +202,7 @@ export default function Home() {
                         {/*Favorittfarger*/}
                         <div className={`${visibleModule === "modul4" ? "" : "hidden"} overflow-y-scroll absolute  h-[calc(100%-3.3em)] w-[calc(100%-1.5em)] favorite-color-picker flex-grow rounded-lg`}>
                             <FavoriteColorPicker onColorSelect={handleColorSelect} selectedColor={selectedColor} favoriteColors={favoriteColors}/>
-                        </div>   
+                        </div>
                     
                 </div>
 
