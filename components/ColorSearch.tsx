@@ -40,7 +40,7 @@ export const Search: React.FC<SearchProps> = ({ onResultsUpdate }) => {
             <Configure hitsPerPage={500}/>
             <CustomResults onResultsUpdate={onResultsUpdate}/>
 
-            <div className="grid grid-cols-3 gap-2 h-20">
+            <div className="grid grid-cols-3 gap-2">
                 <div className="col-span-2">
                     <SearchBox translations={{ placeholder: 'Søk her' }}/>
                 </div>
