@@ -47,7 +47,7 @@ const ColorPicker: React.FC<{
     }, [handleScroll]); // Include `handleScroll` in the dependency array
 
     return (
-        <div ref={loaderRef} className="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-3 lg:gap-2 flex-grow overflow-y-scroll absolute h-[calc(100%-4.2em)] lg:h-[calc(100%-3.8em)] w-[calc(100%-1.5em)] rounded-lg pt-2">
+        <div ref={loaderRef} className="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-3 lg:gap-2 flex-grow overflow-y-scroll absolute h-[calc(100%-4.2em)] lg:h-[calc(100%-3.8em)] w-[calc(100%-1.5em)] rounded-lg pt-2 ">
             {colors.slice(0, displayCount).map((colorItem, index) => (
                 <ColorCard key={index} colorItem={colorItem} handleColorClick={handleColorClick} selectedColor={selectedColor} />
             ))}
