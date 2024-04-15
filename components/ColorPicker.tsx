@@ -35,11 +35,11 @@ const ColorPicker: React.FC<{
                     <ColorCard key={index} colorItem={colorItem} handleColorClick={handleColorClick} selectedColor={selectedColor} />
                 ))}
             </div>
-            {displayCount < colors.length && (
+            {/* {displayCount < colors.length && (
                 <button onClick={handleShowMore} className="mt-4 px-4 py-2 text-white border-blue-700 bg-blue-500 rounded">
                     Show More
                 </button>
-            )}
+            )} */}
         </div>
     );
 };
