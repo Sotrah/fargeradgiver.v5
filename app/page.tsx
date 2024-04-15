@@ -185,7 +185,7 @@ export default function Home() {
                         </div>
 
                         {/*Søkebar og Fargevelger*/}
-                        <div className={`${visibleModule === "modul2" ? "" : "hidden"} flex-grow overflow-y-scroll absolute h-[calc(100%-4.2em)] lg:h-[calc(100%-3.8em)] w-[calc(100%-1.5em)] rounded-lg pt-2`} >
+                        <div className={`${visibleModule === "modul2" ? "" : "hidden"} flex-grow`} >
                             
                           <Search onResultsUpdate={handleResultsUpdate}/>
 
@@ -202,7 +202,7 @@ export default function Home() {
                         {/*Favorittfarger*/}
                         <div className={`${visibleModule === "modul4" ? "" : "hidden"} overflow-y-scroll absolute  h-[calc(100%-3.3em)] w-[calc(100%-1.5em)] favorite-color-picker flex-grow rounded-lg`}>
                             <FavoriteColorPicker onColorSelect={handleColorSelect} selectedColor={selectedColor} favoriteColors={favoriteColors}/>
-                        </div>   
+                        </div>
                     
                 </div>
 
