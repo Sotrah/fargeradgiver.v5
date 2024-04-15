@@ -130,23 +130,22 @@ export default function Home() {
             <div className="main-flexbox">
 
                 {/*Bildevelger*/}
-                <div className="left-column  lg:order-1 relative rounded-lg bg-white p-3 ">
+                <div className="left-column lg:order-1 relative rounded-lg bg-white p-3 ">
                     <ImageGridCard selectedImage={selectedImage}
                                    onImageSelect={handleImageSelect}/>
                 </div>
 
-                {/*Midterste kolonne desktop*/}
+              {/*Midterste kolonne desktop*/}
                 <div className="middle-column lg:order-2 relative w-full h-full flex flex-col items-center justify-center">
-                {/*Hovedbildet  */}
-
+                    {/*Hovedbildet  */}
                     <MainImage selectedColor={selectedColor} selectedImage={selectedImage} loading={loading}
                                setLoading={setLoading} recolorOption={recolorOption} formattedHex={formattedHex}/>
 
-
-                {/*Info om valgt farge*/}
-                    <div className=" rounded-lg bg-white flex justify-center items-center p-3 max-h-36">
+                    {/*Info om valgt farge*/}
+                    <div className="rounded-lg bg-white flex justify-center items-center p-3 max-h-36">
                         <ChosenColorInfo selectedColor={selectedColor} formattedHex={formattedHex}/>
                     </div>
+
                     {/*disclaimer*/}
                     <DisclaimerBox/>
                 </div>
