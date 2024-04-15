@@ -29,7 +29,7 @@ const ColorCard: React.FC<ColorCardProps> = ({ colorItem, handleColorClick, sele
     };
 
     return (
-        <div className={`aspect-square w-full h-auto overflow-hidden rounded-lg border-2 relative  ${selectedColor?.hex === colorItem.hex ? 'border-black' : 'hover:border-gray-500 border-lightgray'}`} >
+        <div className={`aspect-square w-full h-auto rounded-lg border-2 relative  ${selectedColor?.hex === colorItem.hex ? 'border-black' : 'hover:border-gray-500 border-lightgray'}`} >
             {/* Favorite button */}
             <button
                 className="absolute opacity-80 top-1 right-1 w-[30%] h-[30%] bg-transparent z-20 flex items-center justify-center overflow-visible"
