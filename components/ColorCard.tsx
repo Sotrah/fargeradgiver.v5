@@ -54,8 +54,6 @@ const ColorCard: React.FC<ColorCardProps> = ({ colorItem, handleColorClick, sele
                 </div>
             </button>
 
-            
-
             {/* Rest of color card */}
             <button
                 className={`w-full absolute inset-0 flex flex-col items-center justify-center `}

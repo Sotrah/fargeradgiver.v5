@@ -53,7 +53,7 @@ export default function Home() {
     setSelectedImage(selectedImage)
   }
   const handleColorSelect = (selectedColor: ColorType | null) => {
-    if (selectedColor != null) {
+    if (selectedColor != null && selectedImage != null) {
         setLoading(true);
     }
     else{
