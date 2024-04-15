@@ -8,24 +8,76 @@
   --background-end-rgb: 255, 255, 255;
 
 }
+/* Basestyling for flexbox layout */
+.main-flexbox {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
 
-/* Grid styling stuff, big and then small */
+/* For skjermer større enn 1024px */
 @media (min-width: 1024px) {
-  .main-grid{
-    display: grid;
-    grid-template-columns: 2fr 3fr 2fr;
-    grid-template-rows: auto minmax(6em, auto);
+  .main-flexbox {
+    flex-direction: row;
+    padding-bottom: 4rem;
+  }
+  .left-column {
+    width: 20%;
+    max-height: 90vh;
+  }
+  .middle-column {
+    flex: 1;
     gap: 0.75rem;
+    padding-top: 2vh;
+
+  }
+  .right-column{
+    width: 30%;
+    max-height: 90vh;
   }
 }
+
+/* For skjermer større enn 1353px */
+@media (min-width: 1024px) {
+  .main-flexbox {
+    flex-direction: row;
+    padding-bottom: 4rem;
+  }
+  .left-column {
+    width: 20%;
+    max-height: 90vh;
+  }
+  .middle-column {
+    flex: 1;
+    gap: 0.75rem;
+    padding-top: 2vh;
+
+  }
+  .right-column{
+    width: 30%;
+    max-height: 90vh;
+  }
+}
+
+/* Tilpasser for mobile enheter */
 @media (max-width: 1023px) {
-  .main-grid{
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto 4fr auto 5fr;
+  .main-flexbox {
+    flex-direction: column;
     gap: 0.75rem;
   }
+  .left-column, .middle-column  {
+    width: 100%;
+    gap: 0.75rem;
+  }
+  .right-column {
+    height: 50vh;
+  }
+  .color-info {
+
+  }
 }
+
+
 
 /* For skjermer større enn 1024px */
 @media (min-width: 1024px) {

@@ -53,7 +53,13 @@ const ImageGridCard: React.FC<{
 
     return (
         <div className="lg:h-full flex flex-col justify-between gap-2">
-            <div className="flex-none grid lg:grid-cols-2 grid-cols-3 gap-2 relative">
+            <div
+                className={`rounded-lg flex-initial`}
+                style={{height: '2em', width: '8em'}}
+            >
+                <UploadButton onUploadSuccess={handleUploadSuccess}/>
+            </div>
+            <div className="flex-none grid lg:grid-cols-1 grid-cols-3 gap-2 relative flex-grow overflow-y-scroll absolute h-[calc(100%-4.2em)] lg:h-[calc(100%-3.8em)] `}">
                 {images.map((src, index) => (
                     <div
                         key={index}
@@ -71,18 +77,14 @@ const ImageGridCard: React.FC<{
                     </div>
                 ))}
                 {images.length < maxImageLength && (
-                    <div className="w-full rounded-lg border-dashed border-2 border-gray-400 flex items-center justify-center">
+                    <div
+                        className="w-full rounded-lg border-dashed border-2 border-gray-400 flex items-center justify-center">
                         <p></p>
                     </div>
-                )} 
+                )}
             </div>
-            <div
-                className={`rounded-lg flex-initial`}
-                style={{ height: '5.25em' }}
-                >
-                    <UploadButton onUploadSuccess={handleUploadSuccess} />
-            </div>
-        </div>    
+
+        </div>
     );
 }
 
