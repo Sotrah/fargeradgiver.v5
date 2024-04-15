@@ -36,18 +36,24 @@ const ColorCard: React.FC<ColorCardProps> = ({ colorItem, handleColorClick, sele
         <div className={`w-full overflow-hidden rounded-lg border-2 relative hover:border-gray-500 ${selectedColor?.hex === colorItem.hex ? 'border-black' : 'border-lightgray'}`} style={{ paddingBottom: '100%' }}>
             {/* Favorite button */}
             <button
-                className="absolute top-1 right-1 w-1/4 bg-transparent cursor-pointer z-10"
+                className="absolute opacity-80 top-1 right-1 w-[30%] h-[30%] bg-transparent z-20 flex items-center justify-center "
                 onClick={(event) => {
                     // event.stopPropagation(); // Prevent the color card click event from triggering
                     handleFavoriteClick(colorItem); // Pass the color item to the handleFavoriteClick function
                 }}
                 aria-label={`Favorite ${colorItem.shortName}`}
             >
-                <svg className={`opacity-50 w-full h-full stroke-1 stroke-black fill-current hover:fill-gray-700 ${favoriteColors.includes(colorItem) ? 'fill-black' : 'fill-transparent'}`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-
-                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                <svg className="absolute bg-transparent" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="49" fill="white" />
                 </svg>
+
+                <div className={`h-full w-full flex items-center justify-center z-30 stroke-1 stroke-gray-700 fill-current  ${favoriteColors.includes(colorItem) ? 'fill-gray-700' : 'hover:fill-gray-400 fill-transparent'}`}>
+                    <svg className='w-3/5 h-3/5' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                    </svg>
+                </div>
             </button>
+
             {/* Rest of color card */}
             <button
                 className={`w-full absolute inset-0 flex flex-col items-center justify-center `}
@@ -56,7 +62,7 @@ const ColorCard: React.FC<ColorCardProps> = ({ colorItem, handleColorClick, sele
                 aria-label={`Select ${colorItem.shortName} color`}
             >
                 <div className="w-full h-2/3 flex items-center justify-center" style={{ backgroundColor: colorItem.hex }}>
-                    <div className="w-3/4 h-3/4 rounded-lg" style={{ backgroundColor: colorItem.hex }}></div>
+                    {/* <div className="w-3/4 h-3/4 rounded-lg" style={{ backgroundColor: colorItem.hex }}></div> */}
                 </div>
                 <div className="w-full h-1/3 flex items-center justify-center text-xs text-center" style={{ lineHeight: '1' }}>
                     <span>{colorItem.shortName}</span>

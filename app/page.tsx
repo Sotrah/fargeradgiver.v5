@@ -7,26 +7,24 @@ import {ColorType} from "@/components/ColorType";
 import ImageGridCard from "@/components/ImageGridCard";
 import React, {useEffect, useState, Suspense} from "react";
 import {formatHexColor, mapHitsToColorType} from "@/components/Utils";
-
-
 import {Search}  from "@/components/ColorSearch";
 import colours_dump from "colours_dump.json"
 import {HitProps} from "@/components/ColorSearchHit";
 import GetUrlColor from "@/components/GetUrlColor";
-import PromptRecolor from "@/components/PromptOptions"; // Adjust the path as necessary
+import PromptRecolor from "@/components/PromptOptions"; 
 import ChosenColorInfo from "@/components/ChosenColorInfo";
 import MainImage from "@/components/MainImage";
 
-
 export default function Home() {
 
+  const [selectedImage, setSelectedImage] = useState<String | null>(null);
   const [selectedColor, setSelectedColor] = useState<ColorType | null>(null);
   const [favoriteColors, setFavoriteColors] = useState<ColorType[]>([]);
   const formattedHex = selectedColor ? formatHexColor(selectedColor.hex) : null;
   const [visibleModule, setVisibleModule] = useState("modul2");
   const [loading, setLoading] = useState(false);
-  const [imageToTransform, setImageToTransform] = useState<String | null>('https://res.cloudinary.com/dv4ydb3qf/image/upload/v1712314352/qrkelyfikaa03biiaedn_od2u99.jpg');
-  const [colors, setColors] = useState<ColorType[]>([]); // Update type to ColorType[]
+  
+  const [colors, setColors] = useState<ColorType[]>([]); 
   const [searchResults, setSearchResults] = useState<ColorType[]>([]);
   const[colorsAreLoaded, setColorsAreLoaded] = useState(false);
   const [recolorOption, setRecolorOption] = useState("All the walls and every wall"); // Default value can be adjusted
@@ -44,29 +42,29 @@ export default function Home() {
     setColors(colours_dump);
   }, []);
 
-  const handleImageSelect = (selectedPicture: String) => {
-    if (selectedPicture != imageToTransform) {
-      setLoading(true);
-      setImageToTransform(selectedPicture)
-    }
-    else {
-      setSelectedColor(null);
-    }
-  }
 
+  const handleImageSelect = (selectedImage: String | null) => {
+    if (selectedImage != null) {
+      setLoading(true);
+    }
+    else{
+      setLoading(false);
+    }
+    setSelectedImage(selectedImage)
+  }
   const handleColorSelect = (selectedColor: ColorType | null) => {
-    if (selectedColor != null) {
+    if (selectedColor != null && selectedImage != null) {
         setLoading(true);
     }
+    else{
+        setLoading(false);
+    }
     setSelectedColor(selectedColor)
-  }
-  
-
-  
+  }  
 
   return (
     <FavoriteColorContext.Provider value={{ favoriteColors, setFavoriteColors }}>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense>
             <GetUrlColor onColorSelect={handleColorSelect}
                         handleColorSelect={handleColorSelect}
                         selectedColor={selectedColor}
@@ -132,12 +130,13 @@ export default function Home() {
 
                 {/*Bildevelger*/}
                 <div className="lg:row-span-2 lg:order-1 relative rounded-lg bg-white p-3">
-                  <ImageGridCard onPictureSelect={handleImageSelect}/>
+                  <ImageGridCard selectedImage={selectedImage}
+                                  onImageSelect={handleImageSelect}/>
                 </div>
 
                 {/*Hovedbildet  */}
                 <div className="lg:col-span-1 lg:row-span-1 lg:order-2 relative w-full h-full flex items-center justify-center bg-white rounded-lg p-3">
-                    <MainImage selectedColor={selectedColor} imageToTransform={imageToTransform} loading={loading} setLoading={setLoading} recolorOption={recolorOption} formattedHex={formattedHex}/>
+                    <MainImage selectedColor={selectedColor} selectedImage={selectedImage} loading={loading} setLoading={setLoading} recolorOption={recolorOption} formattedHex={formattedHex}/>
 
 
                 </div>
