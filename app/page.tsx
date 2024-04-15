@@ -127,7 +127,7 @@ export default function Home() {
           </div>
 
             {/*Div-container til hovedelementene*/}
-            <div className="main-flexbox ">
+            <div className="main-flexbox">
 
                 {/*Bildevelger*/}
                 <div className="left-column  lg:order-1 relative rounded-lg bg-white p-3 ">
@@ -153,11 +153,11 @@ export default function Home() {
 
 
                 {/*Siste kolonne på desktopview*/}
-                <div className="right-column lg:order-3 relative w-full bg-white rounded-lg p-3 ">
+                <div className="flex flex-col right-column lg:order-3 relative w-full h-auto bg-white rounded-lg p-3 ">
 
                     {/*Tabs for fargevalg*/}
                     <div
-                        className="flex-grow text-center lg:text-xs text-sm flex justify-between sticky top-0 z-50 bg-white p-2 rounded-lg">
+                        className="flex-initial text-center lg:text-xs text-sm flex justify-between sticky top-0 z-50 bg-white p-2 rounded-lg">
                         <button
                             style={{
                                 borderBottom: visibleModule === "modul2" ? "3px solid blue" : "",
@@ -187,26 +187,24 @@ export default function Home() {
                         </button>
                     </div>
 
-                        {/*Søkebar og Fargevelger*/}
-                        <div className={`${visibleModule === "modul2" ? "" : "hidden"} flex-grow h-[calc(100%-4.2em)] lg:h-[calc(100%-3.8em)] rounded-lg pt-2`} > {/*Fjernet absolute og width */}
-                            
-                          <Search onResultsUpdate={handleResultsUpdate}/>
-
-                        <ColorPicker onColorSelect={handleColorSelect}
-                                     selectedColor={selectedColor}
-                                     colors={searchResults}/>
+                    {/*Søkebar og Fargevelger*/}
+                    <div className={`${visibleModule === "modul2" ? "" : "hidden"} grow flex flex-col  rounded-lg pt-2`} > {/*Fjernet absolute og width */} 
+                      <Search onResultsUpdate={handleResultsUpdate}/>
+                      <ColorPicker onColorSelect={handleColorSelect}
+                                    selectedColor={selectedColor}
+                                    colors={searchResults}/>
                     </div>
 
                     {/*Nylig brukte farger*/}
                     <div
-                        className={`${visibleModule === "modul3" ? "" : "hidden"} overflow-y-scroll absolute  h-[calc(100%-3.3em)] w-[calc(100%-1.5em)] recent-color-picker flex-grow rounded-lg`}>
+                        className={`${visibleModule === "modul3" ? "" : "hidden"} grow flex flex-col  rounded-lg pt-2`}>
                         <RecentColorPicker onColorSelect={handleColorSelect} selectedColor={selectedColor}
                                            visibleModule={visibleModule}/>
                     </div>
 
                     {/*Favorittfarger*/}
                     <div
-                        className={`${visibleModule === "modul4" ? "" : "hidden"} overflow-y-scroll absolute  h-[calc(100%-3.3em)] w-[calc(100%-1.5em)] favorite-color-picker flex-grow rounded-lg`}>
+                        className={`${visibleModule === "modul4" ? "" : "hidden"} grow flex flex-col  rounded-lg pt-2`}>
                         <FavoriteColorPicker onColorSelect={handleColorSelect} selectedColor={selectedColor}
                                              favoriteColors={favoriteColors}/>
                     </div>
