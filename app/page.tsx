@@ -137,17 +137,25 @@ export default function Home() {
 
               {/*Midterste kolonne desktop*/}
                 <div className="middle-column lg:order-2 relative w-full h-full flex flex-col items-center justify-center">
-                    {/*Hovedbildet  */}
+
+                {/*Hovedbildet  */}
+                    <div className="middle-column order-2 lg:order-1">
+
                     <MainImage selectedColor={selectedColor} selectedImage={selectedImage} loading={loading}
                                setLoading={setLoading} recolorOption={recolorOption} formattedHex={formattedHex}/>
 
-                    {/*Info om valgt farge*/}
-                    <div className="rounded-lg bg-white flex justify-center items-center p-3 max-h-36">
+                    </div>
+
+                {/*Info om valgt farge*/}
+                    <div className="color-info order-3 lg:order-2 rounded-lg bg-white flex justify-center items-center p-3 max-h-36">
+
                         <ChosenColorInfo selectedColor={selectedColor} formattedHex={formattedHex}/>
                     </div>
 
                     {/*disclaimer*/}
+                    <div className="order-1 lg:order-3">
                     <DisclaimerBox/>
+                    </div>
                 </div>
 
 
