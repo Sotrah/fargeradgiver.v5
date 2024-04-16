@@ -127,16 +127,17 @@ export default function Home() {
           </div>
 
             {/*Div-container til hovedelementene*/}
-            <div className="main-flexbox ">
+            <div className="main-flexbox">
 
                 {/*Bildevelger*/}
-                <div className="left-column  lg:order-1 relative rounded-lg bg-white p-3 ">
+                <div className="left-column lg:order-1 relative rounded-lg bg-white p-3 ">
                     <ImageGridCard selectedImage={selectedImage}
                                    onImageSelect={handleImageSelect}/>
                 </div>
 
-                {/*Midterste kolonne desktop*/}
+              {/*Midterste kolonne desktop*/}
                 <div className="middle-column lg:order-2 relative w-full h-full flex flex-col items-center justify-center">
+
                 {/*Hovedbildet  */}
                     <div className="middle-column order-2 lg:order-1">
 
@@ -147,8 +148,10 @@ export default function Home() {
 
                 {/*Info om valgt farge*/}
                     <div className="color-info order-3 lg:order-2 rounded-lg bg-white flex justify-center items-center p-3 max-h-36">
+
                         <ChosenColorInfo selectedColor={selectedColor} formattedHex={formattedHex}/>
                     </div>
+
                     {/*disclaimer*/}
                     <div className="order-1 lg:order-3">
                     <DisclaimerBox/>
@@ -157,11 +160,11 @@ export default function Home() {
 
 
                 {/*Siste kolonne på desktopview*/}
-                <div className="right-column lg:order-3 relative w-full bg-white rounded-lg p-3 ">
+                <div className="flex flex-col right-column lg:order-3 relative w-full h-auto bg-white rounded-lg p-3 ">
 
                     {/*Tabs for fargevalg*/}
                     <div
-                        className="flex-grow text-center lg:text-xs text-sm flex justify-between sticky top-0 z-50 bg-white p-2 rounded-lg">
+                        className="flex-initial text-center lg:text-xs text-sm flex justify-between sticky top-0 z-50 bg-white p-2 rounded-lg">
                         <button
                             style={{
                                 borderBottom: visibleModule === "modul2" ? "3px solid blue" : "",
@@ -192,27 +195,23 @@ export default function Home() {
                     </div>
 
                     {/*Søkebar og Fargevelger*/}
-                    {/*Overflow, absolute og w- skal fjernes*/}
-                    <div
-                        className={`${visibleModule === "modul2" ? "" : "hidden"} flex-grow overflow-y-scroll absolute h-[calc(100%-4.2em)] lg:h-[calc(100%-3.8em)] w-[calc(100%-1.5em)] rounded-lg pt-2`}>
-
-                        <Search onResultsUpdate={handleResultsUpdate}/>
-
-                        <ColorPicker onColorSelect={handleColorSelect}
-                                     selectedColor={selectedColor}
-                                     colors={searchResults}/>
+                    <div className={`${visibleModule === "modul2" ? "" : "hidden"} grow flex flex-col  rounded-lg pt-2`} > {/*Fjernet absolute og width */} 
+                      <Search onResultsUpdate={handleResultsUpdate}/>
+                      <ColorPicker onColorSelect={handleColorSelect}
+                                    selectedColor={selectedColor}
+                                    colors={searchResults}/>
                     </div>
 
                     {/*Nylig brukte farger*/}
                     <div
-                        className={`${visibleModule === "modul3" ? "" : "hidden"} overflow-y-scroll absolute  h-[calc(100%-3.3em)] w-[calc(100%-1.5em)] recent-color-picker flex-grow rounded-lg`}>
+                        className={`${visibleModule === "modul3" ? "" : "hidden"} grow flex flex-col  rounded-lg pt-2`}>
                         <RecentColorPicker onColorSelect={handleColorSelect} selectedColor={selectedColor}
                                            visibleModule={visibleModule}/>
                     </div>
 
                     {/*Favorittfarger*/}
                     <div
-                        className={`${visibleModule === "modul4" ? "" : "hidden"} overflow-y-scroll absolute  h-[calc(100%-3.3em)] w-[calc(100%-1.5em)] favorite-color-picker flex-grow rounded-lg`}>
+                        className={`${visibleModule === "modul4" ? "" : "hidden"} grow flex flex-col  rounded-lg pt-2`}>
                         <FavoriteColorPicker onColorSelect={handleColorSelect} selectedColor={selectedColor}
                                              favoriteColors={favoriteColors}/>
                     </div>

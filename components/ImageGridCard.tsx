@@ -91,6 +91,7 @@ const ImageGridCard: React.FC<{
                 </svg>
                 </span>
             </div>
+
             {showPopup && (
                 <div
                     ref={popupRef}
@@ -110,11 +111,13 @@ const ImageGridCard: React.FC<{
             )}
 
             <div
-                className="flex-none grid lg:grid-cols-1 grid-cols-3 gap-2 relative flex-grow overflow-y-scroll absolute h-[calc(100%-4.2em)] lg:h-[calc(100%-3.8em)] `}">
+
+            <div className="flex-auto grid auto-rows-max lg:grid-cols-1 grid-cols-3 gap-2 relative overflow-y-scroll  `}">
+
                 {images.map((src, index) => (
                     <div
                         key={index}
-                        className={` rounded-lg flex items-center overflow-hidden relative border-2 ${selectedGridIndex === index ? 'border-black' : 'border-transparent'}  hover:border-gray-500`}
+                        className={` rounded-lg flex aspect-[4/3] items-center overflow-hidden relative border-2 ${selectedGridIndex === index ? 'border-black' : 'border-transparent'}  hover:border-gray-500`}
                         onClick={() => handleImageClick(index)}
                     >
                         <CloudinaryWrapper
@@ -129,8 +132,10 @@ const ImageGridCard: React.FC<{
                 ))}
                 {images.length < maxImageLength && (
                     <div
-                        className="w-full rounded-lg border-dashed border-2 border-gray-400 flex items-center justify-center">
-                    <p></p>
+
+                        className="w-full aspect-[4/3] rounded-lg border-dashed border-2 border-gray-400 flex items-center justify-center">
+                        <p></p>
+
                     </div>
                 )}
             </div>

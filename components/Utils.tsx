@@ -19,4 +19,3 @@ export function mapHitsToColorType(hits: HitProps[]): ColorType[] {
     }));
 
 }
-

@@ -23,6 +23,6 @@
       "@/app/*":  ["app/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts","**/*.js","**/*.jsx"],
+  "include": ["../fargeradgiver.v5/next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts","**/*.js","**/*.jsx"],
   "exclude": ["node_modules"]
 }

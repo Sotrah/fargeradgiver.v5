@@ -37,24 +37,24 @@ export const Search: React.FC<SearchProps> = ({ onResultsUpdate }) => {
     const toggleCollapse = () => setIsCollapsed(!isCollapsed); // Toggle function
     return (
         <InstantSearch searchClient={searchClient} indexName="colours_dump">
-            <Configure hitsPerPage={200}/>
+            <Configure hitsPerPage={500}/>
             <CustomResults onResultsUpdate={onResultsUpdate}/>
 
-            <div className="grid grid-cols-4 gap-2">
-                <div className="col-span-3">
-            <SearchBox translations={{ placeholder: 'Søk her' }}/>
+            <div className="grid grid-cols-3 gap-2">
+                <div className="col-span-2">
+                    <SearchBox translations={{ placeholder: 'Søk her' }}/>
                 </div>
 
-            <button onClick={toggleCollapse} className="text-sm lg:text-xs xl:text-sm border-2 bg-white hover:border-gray-500 rounded-lg">
-                {isCollapsed ? 'Vis filter' : 'Gjem filter'}
-            </button>
+                <button onClick={toggleCollapse} className="text-sm lg:text-xs xl:text-sm border-2 bg-white hover:border-gray-500 rounded-lg">
+                    {isCollapsed ? 'Vis filter' : 'Gjem filter'}
+                </button>
 
-            {/* Always render the RefinementList, but control its visibility with a CSS class */}
+                {/* Always render the RefinementList, but control its visibility with a CSS class */}
                 <div className="col-span-3">
-            <div className={isCollapsed ? 'hidden' : ''}>
-                <RefinementList attribute="collections.name"/>
-            </div>
-            </div>
+                    <div className={isCollapsed ? 'hidden' : ''}>
+                        <RefinementList attribute="collections.name"/>
+                    </div>
+                </div>
             </div>
 
         </InstantSearch>
