@@ -7,7 +7,8 @@ const UploadButton = ({ onUploadSuccess }) => {
     return (
       <div className='h-full w-full'>
         <CldUploadButton
-            className='bg-blue-500 hover:bg-blue-700 text-white rounded-lg w-full h-full'
+            className='rounded-lg flex-initial bg-white hover:bg-gray-200 text-blue-950 border-2 border-blue-950 rounded-lg w-full h-full'
+            style={{height: '2em', width: '6em'}}
             uploadPreset="colorchangesigned"
             signatureEndpoint="/api/sign-cloudinary-params"
             onSuccess={(result, { widget }) => {
@@ -73,7 +74,7 @@ const UploadButton = ({ onUploadSuccess }) => {
                 }
             }}
         >
-            <p>Last opp bilde</p>
+            <p>Last opp</p>
         </CldUploadButton>
       </div>
     );
