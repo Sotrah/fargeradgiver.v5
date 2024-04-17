@@ -94,7 +94,7 @@
   .main-container, .c-site-header__top .container {
     margin-left: auto;
     margin-right: auto;
-    max-width: 450px;
+    max-width: 550px;
     padding-left: 15px;
     padding-right: 15px;
   }
@@ -235,17 +235,19 @@ body {
   }
 }
 
-/*Tabs*/
+
+/*Fargevelger tabs*/
 .tab-container {
   display: flex;
   justify-content: space-between;
   text-align: justify;
+  gap: 0.75em;
   background-color: white;
   border-bottom: 2px solid #cccccc; /* Kontinuerlig grå linje */
 }
 .tab-button {
   position: relative; /* Gjør at vi kan posisjonere pseudo-elementet korrekt */
-  padding: 8px 16px; /* Juster etter behov */
+  height: 3em; /* Juster etter behov */
   font-weight: normal;
   color: gray;
   transition: all 0.3s ease; /* Gjør overgangene mykere */
@@ -264,9 +266,16 @@ body {
   background-color: blue; /* Den valgte taben viser den blå linjen */
 }
 .tab-button.selected {
-  font-weight: bold;
+  font-weight: semibold;
   color: black;
 }
+
+@media (max-width: 1023px) {
+  .tab-button {
+    font-size: medium;
+  }
+}
+
 
 .mm-page{
   box-sizing: border-box;
@@ -383,6 +392,7 @@ body {
   bottom: 0;
   right: -100%; /* Start offscreen to the right */
   width: 300px; /* Adjust width as needed */
+  max-width: 80vw;
   height: 100vh;
   background-color: white;
   box-shadow: -2px 0 5px rgba(0,0,0,0.5);

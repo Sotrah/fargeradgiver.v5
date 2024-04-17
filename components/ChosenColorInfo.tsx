@@ -32,8 +32,8 @@ const ChosenColorInfo: React.FC<{
             )}
             {!selectedColor && (
                 <div className="flex items-center justify-center text-cente h-14">
-                    <span className="desktop-text">Velg en farge til høyre for å redigere bildet.</span>
-                    <span className="mobile-text">Velg en farge for å redigere bildet.</span>
+                    <span className="desktop-text">Velg en farge til høyre for å redigere bildet</span>
+                    <span className="mobile-text">Velg en farge for å redigere bildet</span>
                 </div>
 
             )}

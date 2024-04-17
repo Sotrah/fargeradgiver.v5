@@ -35,57 +35,63 @@ interface SearchProps {
 const transformItems: CurrentRefinementsProps['transformItems'] = (items) => {
     return items.map(item => ({
         ...item,
-        label: item.label.replace(/^[^:]+: /, '')  // Removes everything before and after the ":".
-    }));
+        label: item.label.replace(/^[^:]+: /, ''),  // Removes everything before and after the ":".
+
+    }))
 };
 export const Search: React.FC<SearchProps> = ({ onResultsUpdate }) => {
     const [isCollapsed, setIsCollapsed] = useState(true); // Default to collapsed
 
-    // Oppdaterer useEffect for å håndtere klikk utenfor filter-panelet
     useEffect(() => {
         const handleOutsideClick = (event: MouseEvent) => {
             const panelElement = document.querySelector('.filter-panel') as HTMLDivElement;
-            // Sjekker om panelElement eksisterer og om det ikke inneholder klikket mål
             if (panelElement && !panelElement.contains(event.target as Node)) {
                 setIsCollapsed(true);
             }
         };
 
-        // Legger til event listener hvis panel er åpent
         if (!isCollapsed) {
             document.addEventListener('click', handleOutsideClick);
         }
 
-        // Opprydning: fjerner event listener
         return () => {
             document.removeEventListener('click', handleOutsideClick);
         };
-    }, [isCollapsed]); // Avhenger av isCollapsed for å legge til/fjerne listener
-    const toggleCollapse = () => setIsCollapsed(!isCollapsed); // Toggle function
+    }, [isCollapsed]);
+
+    const toggleCollapse = () => setIsCollapsed(!isCollapsed);
 
     return (
         <InstantSearch searchClient={searchClient} indexName="colours_dump">
             <Configure hitsPerPage={500}/>
             <CustomResults onResultsUpdate={onResultsUpdate}/>
-            <CurrentRefinements transformItems={transformItems}/>
 
             <div className="grid grid-cols-3 gap-2">
                 <div className="col-span-2">
-                    <SearchBox translations={{placeholder: 'Søk her'}}/>
+                    <SearchBox translations={{ placeholder: 'Søk her' }}/>
                 </div>
-
                 <button onClick={toggleCollapse}
                         className="text-sm lg:text-xs xl:text-sm border-2 bg-white hover:border-gray-500 rounded">
                     {isCollapsed ? 'Vis filter' : 'Skjul filter'}
                 </button>
             </div>
 
+            {/* Clear refinements button and current refinements display */}
+            <div className="flex space-x-2 bg-white py-1">
+                <ClearRefinements
+                    translations={{ reset: "Nullstill" }}
+                    className="text-xs  text-white rounded-full cursor-pointer"
+                />
+                <div className="flex overflow-x-auto whitespace-nowrap">
+                    <CurrentRefinements transformItems={transformItems}/>
+                </div>
+            </div>
+
             {/* Slideout panel for the filters */}
             <div className={`filter-panel ${!isCollapsed ? 'active' : ''}`}>
                 <ClearRefinements
-                    translations={{
-                        reset: 'Tilbakestill alle filtre'
-                    }}
+                    translations={{ reset: 'Tilbakestill alle filtre' }}
+                    className="px-4 py-2 bg-white hover:bg-gray-100 text-gray-800 rounded"
                 />
                 <RefinementList attribute="collections.name"/>
                 <button onClick={() => setIsCollapsed(true)} className="reset-button">
