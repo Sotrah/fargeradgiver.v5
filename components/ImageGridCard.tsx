@@ -8,10 +8,6 @@ const ImageGridCard: React.FC<{
     onImageSelect: (image: String | null) => void
     } > = ({ selectedImage, onImageSelect }) => {
     const [selectedGridIndex, setSelectedGridIndex] = useState<number | null>(null);
-    const maxImageLength = 9;
-    const initialUploadImageSlot = 5; // The first index to upload an image to
-    let uploadImageSlot = initialUploadImageSlot; // The current index to upload an image to
-
 
     const popupRef = useRef<HTMLDivElement>(null);
     const [showPopup, setShowPopup] = useState<boolean>(false);
@@ -65,16 +61,10 @@ const ImageGridCard: React.FC<{
         
         // This loops which slot to upload the next image to between the initial value and the max
         const updatedImages = images
-        updatedImages[uploadImageSlot] = result; // Add the uploaded photo to the images array at the current upload slot
+        updatedImages.unshift(result); // Add the uploaded photo to the front of the images array
         setImages(updatedImages);
         console.log(result);
-        handleImageClick(uploadImageSlot); // "click" (select) the uploaded image
-        uploadImageSlot += 1;
-        if (uploadImageSlot >= maxImageLength) {
-            console.log("Resetting upload slot to " + initialUploadImageSlot);
-            uploadImageSlot = initialUploadImageSlot;
-        }
-        console.log("Next upload slot: " + uploadImageSlot);
+        handleImageClick(0); // "click" (select) the uploaded image
     };
 
     return (
@@ -111,8 +101,7 @@ const ImageGridCard: React.FC<{
             )}
 
 
-            <div className="flex-auto grid auto-rows-max lg:grid-cols-1 grid-cols-3 gap-2 relative overflow-y-scroll  `}">
-
+            <div className="flex-auto grid auto-rows-max lg:grid-cols-1 grid-cols-3 gap-2 relative overflow-y-auto  `}">
                 {images.map((src, index) => (
                     <div
                         key={index}
@@ -129,14 +118,7 @@ const ImageGridCard: React.FC<{
                         />
                     </div>
                 ))}
-                {images.length < maxImageLength && (
-                    <div
-
-                        className="w-full aspect-[4/3] rounded-lg border-dashed border-2 border-gray-400 flex items-center justify-center">
-                        <p></p>
-
-                    </div>
-                )}
+                
             </div>
 
         </div>
