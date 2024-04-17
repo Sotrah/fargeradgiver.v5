@@ -85,7 +85,7 @@ const ImageGridCard: React.FC<{
             {showPopup && (
                 <div
                     ref={popupRef}
-                    className="absolute top-0 -right-80 bg-white p-4 border rounded shadow-lg z-50"
+                    className="popup absolute bg-white p-4 border rounded shadow-lg z-50"
                     style={{ zIndex: 1000, width: '350px' }}
                 >
                     <div className="flex justify-end">
@@ -96,6 +96,7 @@ const ImageGridCard: React.FC<{
                         <li> - Liggende format</li>
                         <li> - Mye naturlig lys</li>
                         <li> - Minst mulig rot foran veggflaten</li>
+                        <li> - Se på demobildene for inspirasjon</li>
                     </ul>
                 </div>
             )}
