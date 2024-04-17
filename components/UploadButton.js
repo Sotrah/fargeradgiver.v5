@@ -73,6 +73,11 @@ const UploadButton = ({ onUploadSuccess }) => {
                             }
                         }
                     }
+                },
+                styles: {
+                    palette: {
+                        link: "#255199",
+                    }
                 }
             }}
         >
