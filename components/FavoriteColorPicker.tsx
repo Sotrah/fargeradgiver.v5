@@ -28,7 +28,7 @@ const FavoriteColorPicker: React.FC<{
     };
 
     return (
-        <div className="flex-auto grid h-20 auto-rows-max grid-cols-3 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-3 lg:gap-2 overflow-y-scroll  rounded-lg ">
+        <div className="flex-auto grid h-20 auto-rows-max grid-cols-3 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-3 lg:gap-2 overflow-y-scroll  rounded ">
             {favoriteColors.map((colorItem, index) => (
                 <ColorCard key={index} colorItem={colorItem} handleColorClick={handleColorClick} selectedColor={selectedColor} />
             ))}

@@ -130,7 +130,7 @@ export default function Home() {
             <div className="main-flexbox">
 
                 {/*Bildevelger*/}
-                <div className="left-column lg:order-1 relative rounded-lg bg-white p-3 ">
+                <div className="left-column lg:order-1 relative rounded bg-white p-3 ">
                     <ImageGridCard selectedImage={selectedImage}
                                    onImageSelect={handleImageSelect}/>
                 </div>
@@ -147,7 +147,7 @@ export default function Home() {
                     </div>
 
                 {/*Info om valgt farge*/}
-                    <div className="color-info order-3 lg:order-2 rounded-lg bg-white flex justify-center items-center p-3 max-h-36">
+                    <div className="color-info order-3 lg:order-2 rounded bg-white flex justify-center items-center p-3 max-h-36">
 
                         <ChosenColorInfo selectedColor={selectedColor} formattedHex={formattedHex}/>
                     </div>
@@ -160,11 +160,11 @@ export default function Home() {
 
 
                 {/*Siste kolonne på desktopview*/}
-                <div className="flex flex-col right-column lg:order-3 relative w-full h-auto bg-white rounded-lg p-3 ">
+                <div className="flex flex-col right-column lg:order-3 relative w-full h-auto bg-white rounded p-3 ">
 
                     {/*Tabs for fargevalg*/}
                     <div
-                        className="flex-initial text-center lg:text-xs text-sm flex justify-between sticky top-0 z-50 bg-white p-2 rounded-lg">
+                        className="flex-initial text-center lg:text-xs text-sm flex justify-between sticky top-0 z-50 bg-white p-2 rounded">
                         <button
                             style={{
                                 borderBottom: visibleModule === "modul2" ? "3px solid blue" : "",
@@ -195,7 +195,7 @@ export default function Home() {
                     </div>
 
                     {/*Søkebar og Fargevelger*/}
-                    <div className={`${visibleModule === "modul2" ? "" : "hidden"} grow flex flex-col  rounded-lg`} > {/*Fjernet absolute og width */}
+                    <div className={`${visibleModule === "modul2" ? "" : "hidden"} grow flex flex-col  rounded`} > {/*Fjernet absolute og width */}
                       <Search onResultsUpdate={handleResultsUpdate}/>
                       <ColorPicker onColorSelect={handleColorSelect}
                                     selectedColor={selectedColor}
@@ -204,14 +204,14 @@ export default function Home() {
 
                     {/*Nylig brukte farger*/}
                     <div
-                        className={`${visibleModule === "modul3" ? "" : "hidden"} grow flex flex-col  rounded-lg pt-2`}>
+                        className={`${visibleModule === "modul3" ? "" : "hidden"} grow flex flex-col  rounded pt-2`}>
                         <RecentColorPicker onColorSelect={handleColorSelect} selectedColor={selectedColor}
                                            visibleModule={visibleModule}/>
                     </div>
 
                     {/*Favorittfarger*/}
                     <div
-                        className={`${visibleModule === "modul4" ? "" : "hidden"} grow flex flex-col  rounded-lg pt-2`}>
+                        className={`${visibleModule === "modul4" ? "" : "hidden"} grow flex flex-col  rounded pt-2`}>
                         <FavoriteColorPicker onColorSelect={handleColorSelect} selectedColor={selectedColor}
                                              favoriteColors={favoriteColors}/>
                     </div>

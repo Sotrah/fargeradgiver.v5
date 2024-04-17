@@ -31,7 +31,7 @@ const MainImage: React.FC<{
             <div className={`${showSpinner ? "opacity-50" : ""} w-full h-full relative`}>
                 {/* CldImage is documented here: https://next.cloudinary.dev/cldimage/configuration
                         If there is an image and a selectedColor selected, transform it with Recolor */}
-                <div className={`absolute top-0 left-0 w-full h-full flex justify-center items-center z-20 rounded-md ${showSpinner ? "opacity-0" : ""}`}>
+                <div className={`absolute top-0 left-0 w-full h-full flex justify-center items-center z-20 rounded ${showSpinner ? "opacity-0" : ""}`}>
                     {selectedImage && selectedColor && (
                         <CldImage
                             placeholder="empty"
@@ -41,12 +41,12 @@ const MainImage: React.FC<{
                             src={selectedImage}
                             alt="Uploaded image"
                             sizes="100vw"
-                            className="rounded-md"
+                            className="rounded"
                             recolor={[`${recolorOption}`, formattedHex]}
                         />
                     )}
                 </div>
-                <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center z-10 rounded-md">
+                <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center z-10 rounded">
                     {selectedImage &&(
                         <CldImage
                             placeholder="empty"
@@ -60,11 +60,11 @@ const MainImage: React.FC<{
                             src={selectedImage}
                             alt="Uploaded image"
                             sizes="100vw"
-                            className="rounded-md"
+                            className="rounded"
                         />
                     )}
                 </div>
-                <div className="flex justify-center items-center z-0 bg-gray-300 rounded-md aspect-[4/3]">
+                <div className="flex justify-center items-center z-0 bg-gray-300 rounded aspect-[4/3]">
                     <span className="desktop-text">Velg et bilde til venstre eller last opp ditt eget.</span>
                     <span className="mobile-text">Velg et bilde over eller last opp ditt eget.</span>
                 </div>
