@@ -38,26 +38,6 @@
   }
 }
 
-/* For skjermer større enn 1353px */
-@media (min-width: 1024px) {
-  .main-flexbox {
-    flex-direction: row;
-    padding-bottom: 4rem;
-  }
-  .left-column {
-    width: 20%;
-    max-height: 90vh;
-  }
-  .middle-column {
-    gap: 0.75rem;
-    padding-top: 2vh;
-
-  }
-  .right-column{
-    width: 30%;
-    max-height: 90vh;
-  }
-}
 
 /* Tilpasser for mobile enheter */
 @media (max-width: 1023px) {
@@ -218,6 +198,24 @@ body {
     height: 72px;
   }
 }
+
+/* Popupvindu med info */
+@media (max-width: 1024px) {
+  .popup {
+    top: 0;
+    right: 0 !important;
+    width: 100px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .popup {
+    top: 0;
+    right: calc(-100% - 88px) !important;
+    width: 350px;
+  }
+}
+
 
 .mm-page{
   box-sizing: border-box;
