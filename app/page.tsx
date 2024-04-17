@@ -162,12 +162,11 @@ export default function Home() {
                 {/*Siste kolonne på desktopview*/}
 
                 <div className="flex flex-col right-column lg:order-3 relative w-full h-auto bg-white rounded p-3 ">
-                    <span className="text-md font-bold mb-4">Velg farge</span>
+                    <span className="text-md font-bold mb-4 hidden lg:block">Velg farge</span>
 
                     {/*Tabs for fargevalg*/}
                     <div
                         className="tab-container text-sm">
-
                         <button
                             className={`tab-button ${visibleModule === "modul2" ? "selected" : ""}`}
                             onClick={() => setVisibleModule("modul2")}>
@@ -181,7 +180,7 @@ export default function Home() {
                         <button
                             className={`tab-button ${visibleModule === "modul4" ? "selected" : ""}`}
                             onClick={() => setVisibleModule("modul4")}>
-                            Dine favoritter
+                            Favoritter
                         </button>
                     </div>
 
