@@ -30,7 +30,6 @@
     gap: 0.75rem;
     padding-top: 2vh;
     width: 100%;
-
   }
   .right-column{
     width: 30%;
@@ -45,14 +44,38 @@
     flex-direction: column;
     gap: 0.75rem;
   }
-  .left-column, .middle-column  {
+  .left-column  {
     width: 100%;
     gap: 0.75rem;
+  }
+  .middle-column{
+    width: 100%;
+    gap: 0.75rem;
+    overflow-y: auto;
+
   }
   .right-column {
     height: 50vh;
   }
+
+  .color-info-lg {
+    display: none;
+    /*position: fixed;*/
+    /*bottom: 0;*/
+    /*background-color: white;*/
+    /*z-index: 10;*/
+    /*padding: 10px;*/
+    /*box-shadow: 0 -5px 5px -5px rgba(0,0,0,0.2);*/
+    /*margin-top: auto;*/
+  }
+  .color-info-sm {
+    box-shadow: 0 -5px 5px -5px rgba(0,0,0,0.2);
+    position: fixed;
+    bottom: 0;
+  }
+
 }
+
 
 
 
@@ -212,7 +235,7 @@ body {
   }
 }
 
-/*Linje under tabs*/
+/*Tabs*/
 .tab-container {
   display: flex;
   justify-content: space-between;
