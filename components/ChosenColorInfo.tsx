@@ -6,7 +6,7 @@ const ChosenColorInfo: React.FC<{
     formattedHex: string| null,
 } > = ({ selectedColor, formattedHex = () => {} }) => {
     return (
-        <div className='flex-1'>
+        <div className='flex-1 max-w-[550px]'>
             {selectedColor && (
                 <div style={{display: 'flex', alignItems: 'center', gap: '1rem'}}>
                     <div style={{

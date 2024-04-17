@@ -221,8 +221,7 @@ export default function Home() {
 
           {/*Info om valgt farge på mobil*/}
           <div
-              className="color-info-sm lg:hidden rounded bg-white flex justify-center items-center p-3 max-h-36 w-full">
-
+              className="color-info-sm lg:hidden rounded bg-white flex justify-center z-50 items-center p-3 max-h-36 w-full">
               <ChosenColorInfo selectedColor={selectedColor} formattedHex={formattedHex}/>
           </div>
 
