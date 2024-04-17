@@ -6,6 +6,7 @@ import {HitProps} from "@/components/ColorSearchHit";
 import {SearchResults} from "algoliasearch-helper";
 import {CurrentRefinementsProps} from "react-instantsearch";
 
+
 interface CustomResultsProps{
     searchState: any;
     searchResults: SearchResults<HitProps>;
@@ -32,11 +33,16 @@ const searchClient = algoliasearch('NOLK3JAMLX', 'fcde24d65b04aa23920ceb878b4362
 interface SearchProps {
     onResultsUpdate: (hits: HitProps[]) => void;
 }
+
+var currentRefinements: any[] = [];
+
 const transformItems: CurrentRefinementsProps['transformItems'] = (items) => {
+    currentRefinements = items;
+    console.log(currentRefinements);
     return items.map(item => ({
         ...item,
         label: item.label.replace(/^[^:]+: /, ''),  // Removes everything before and after the ":".
-
+        
     }))
 };
 export const Search: React.FC<SearchProps> = ({ onResultsUpdate }) => {
@@ -61,6 +67,8 @@ export const Search: React.FC<SearchProps> = ({ onResultsUpdate }) => {
 
     const toggleCollapse = () => setIsCollapsed(!isCollapsed);
 
+    console.log();
+
     return (
         <InstantSearch searchClient={searchClient} indexName="colours_dump">
             <Configure hitsPerPage={500}/>
@@ -78,10 +86,13 @@ export const Search: React.FC<SearchProps> = ({ onResultsUpdate }) => {
 
             {/* Clear refinements button and current refinements display */}
             <div className="flex space-x-2 bg-white py-1">
-                <ClearRefinements
+                {currentRefinements.length !== 0 && (
+                    <ClearRefinements
                     translations={{ reset: "Nullstill" }}
                     className="text-xs text-white rounded-full cursor-pointer"
                 />
+                )}
+                
                 <div className="flex overflow-x-auto whitespace-nowrap">
                     <CurrentRefinements transformItems={transformItems} className="flex flex-wrap gap-2"/>
                 </div>
@@ -90,7 +101,7 @@ export const Search: React.FC<SearchProps> = ({ onResultsUpdate }) => {
             {/* Slideout panel for the filters */}
             <div className={`filter-panel ${!isCollapsed ? 'active' : ''}`}>
                 <ClearRefinements
-                    translations={{ reset: 'Tilbakestill alle filtre' }}
+                    translations={{ reset: 'Nullstill alle filtre' }}
                     className="px-4 py-2 bg-white hover:bg-gray-100 text-gray-800 rounded"
                 />
                 <RefinementList attribute="collections.name" className="text-xlg"/>
