@@ -161,45 +161,35 @@ export default function Home() {
 
                 {/*Siste kolonne på desktopview*/}
                 <div className="flex flex-col right-column lg:order-3 relative w-full h-auto bg-white rounded-lg p-3 ">
+                    <span className="text-md font-bold mb-4">Velg farge</span>
 
                     {/*Tabs for fargevalg*/}
                     <div
-                        className="flex-initial text-center lg:text-xs text-sm flex justify-between sticky top-0 z-50 bg-white p-2 rounded-lg">
+                        className="tab-container text-sm">
                         <button
-                            style={{
-                                borderBottom: visibleModule === "modul2" ? "3px solid blue" : "",
-                                fontWeight: visibleModule === "modul2" ? "bold" : "",
-                                color: visibleModule === "modul2" ? "black" : "gray"
-                            }}
+                            className={`tab-button ${visibleModule === "modul2" ? "selected" : ""}`}
                             onClick={() => setVisibleModule("modul2")}>
                             Alle farger
                         </button>
                         <button
-                            style={{
-                                borderBottom: visibleModule === "modul3" ? "3px solid blue" : "",
-                                fontWeight: visibleModule === "modul3" ? "bold" : "",
-                                color: visibleModule === "modul3" ? "black" : "gray"
-                            }}
+                            className={`tab-button ${visibleModule === "modul3" ? "selected" : ""}`}
                             onClick={() => setVisibleModule("modul3")}>
                             Nylig brukt
                         </button>
                         <button
-                            style={{
-                                borderBottom: visibleModule === "modul4" ? "3px solid blue" : "",
-                                fontWeight: visibleModule === "modul4" ? "bold" : "",
-                                color: visibleModule === "modul4" ? "black" : "gray"
-                            }}
+                            className={`tab-button ${visibleModule === "modul4" ? "selected" : ""}`}
                             onClick={() => setVisibleModule("modul4")}>
                             Dine favoritter
                         </button>
                     </div>
 
                     {/*Søkebar og Fargevelger*/}
-                    <div className={`${visibleModule === "modul2" ? "" : "hidden"} grow flex flex-col  rounded-lg pt-2`} > {/*Fjernet absolute og width */} 
-                      <Search onResultsUpdate={handleResultsUpdate}/>
-                      <ColorPicker onColorSelect={handleColorSelect}
-                                    selectedColor={selectedColor}
-                                    colors={searchResults}/>
+                    <div
+                        className={`${visibleModule === "modul2" ? "" : "hidden"} grow flex flex-col  rounded-lg pt-4`}>
+                        <Search onResultsUpdate={handleResultsUpdate}/>
+                        <ColorPicker onColorSelect={handleColorSelect}
+                                     selectedColor={selectedColor}
+                                     colors={searchResults}/>
                     </div>
 
                     {/*Nylig brukte farger*/}

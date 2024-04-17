@@ -79,7 +79,7 @@ const ImageGridCard: React.FC<{
 
     return (
         <div className="lg:h-full flex flex-col justify-between gap-2">
-            <div className="flex justify-between items-center mb-1">
+            <div className="flex justify-between items-center mb-4">
                 <span className="text-md font-bold">Velg bilde</span>
                 <UploadButton onUploadSuccess={handleUploadSuccess}/>
                 <span className="cursor-pointer" onClick={() => setShowPopup(!showPopup)}>

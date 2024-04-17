@@ -212,6 +212,38 @@ body {
   }
 }
 
+/*Linje under tabs*/
+.tab-container {
+  display: flex;
+  justify-content: space-between;
+  text-align: justify;
+  background-color: white;
+  border-bottom: 2px solid #cccccc; /* Kontinuerlig grå linje */
+}
+.tab-button {
+  position: relative; /* Gjør at vi kan posisjonere pseudo-elementet korrekt */
+  padding: 8px 16px; /* Juster etter behov */
+  font-weight: normal;
+  color: gray;
+  transition: all 0.3s ease; /* Gjør overgangene mykere */
+}
+.tab-button::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; /* Juster dette for å kompensere for den vertikale forskjellen */
+  left: 0;
+  right: 0;
+  height: 3px;
+  background-color: transparent; /* Standard er gjennomsiktig */
+  transition: background-color 0.3s ease;
+}
+.tab-button.selected::after {
+  background-color: blue; /* Den valgte taben viser den blå linjen */
+}
+.tab-button.selected {
+  font-weight: bold;
+  color: black;
+}
 
 .mm-page{
   box-sizing: border-box;
