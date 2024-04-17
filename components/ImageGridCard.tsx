@@ -110,7 +110,6 @@ const ImageGridCard: React.FC<{
                 </div>
             )}
 
-            <div
 
             <div className="flex-auto grid auto-rows-max lg:grid-cols-1 grid-cols-3 gap-2 relative overflow-y-scroll  `}">
 
