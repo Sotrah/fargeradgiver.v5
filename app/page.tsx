@@ -136,7 +136,7 @@ export default function Home() {
                 </div>
 
               {/*Midterste kolonne desktop*/}
-                <div className="middle-column lg:order-2 relative w-full h-full flex flex-col items-center justify-center">
+                <div className="middle-column lg:order-2 relative w-full h-full flex flex-col items-stretch justify-center">
 
                 {/*Hovedbildet  */}
                     <div className="middle-column order-2 lg:order-1">
