@@ -29,7 +29,7 @@ const ColorCard: React.FC<ColorCardProps> = ({ colorItem, handleColorClick, sele
     };
 
     return (
-        <div className={`w-full h-auto aspect-square rounded-lg border-2 relative overflow-hidden ${selectedColor?.hex === colorItem.hex ? 'border-black' : 'hover:border-gray-500 border-lightgray'}`} >
+        <div className={`w-full h-auto aspect-square rounded border-2 relative overflow-hidden ${selectedColor?.hex === colorItem.hex ? 'border-gray-600' : 'hover:border-gray-400 border-gray-200'}`} >
             {/* Favorite button */}
             <button
                 className="absolute opacity-80 top-1 right-1 w-[30%] h-[30%] bg-transparent z-20 flex items-center justify-center overflow-visible"
@@ -77,7 +77,7 @@ const ColorCard: React.FC<ColorCardProps> = ({ colorItem, handleColorClick, sele
                 aria-label={`Select ${colorItem.shortName} color`}
             >
                 <div className="w-full h-2/3 flex items-center justify-center" style={{ backgroundColor: colorItem.hex }}>
-                    {/* <div className="w-3/4 h-3/4 rounded-lg" style={{ backgroundColor: colorItem.hex }}></div> */}
+                    {/* <div className="w-3/4 h-3/4 rounded" style={{ backgroundColor: colorItem.hex }}></div> */}
                 </div>
                 <div className="w-full h-1/3 flex items-center justify-center text-xs text-center" style={{ lineHeight: '1' }}>
                     <span>{colorItem.shortName}</span>

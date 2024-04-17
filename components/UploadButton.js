@@ -7,7 +7,7 @@ const UploadButton = ({ onUploadSuccess }) => {
     return (
       <div className='h-full'>
         <CldUploadButton
-            className='rounded-lg flex-initial text-white rounded-lg w-full h-full'
+            className='rounded flex-initial text-white w-full h-full'
             style={{height: '2em', width: '6em', backgroundColor: '#255199' }}
             onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#17386d'} // Endrer bakgrunnsfarge ved hover
             onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#255199'} // Endrer tilbake til vanlig farge
@@ -72,6 +72,11 @@ const UploadButton = ({ onUploadSuccess }) => {
                                 "aborted": "Avbrutt"
                             }
                         }
+                    }
+                },
+                styles: {
+                    palette: {
+                        link: "#255199",
                     }
                 }
             }}
