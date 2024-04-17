@@ -195,7 +195,7 @@ export default function Home() {
                     </div>
 
                     {/*Søkebar og Fargevelger*/}
-                    <div className={`${visibleModule === "modul2" ? "" : "hidden"} grow flex flex-col  rounded-lg pt-2`} > {/*Fjernet absolute og width */} 
+                    <div className={`${visibleModule === "modul2" ? "" : "hidden"} grow flex flex-col  rounded-lg`} > {/*Fjernet absolute og width */}
                       <Search onResultsUpdate={handleResultsUpdate}/>
                       <ColorPicker onColorSelect={handleColorSelect}
                                     selectedColor={selectedColor}
