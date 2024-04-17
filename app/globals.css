@@ -240,6 +240,7 @@ body {
 .tab-container {
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
   text-align: justify;
   gap: 0.75em;
   background-color: white;
@@ -247,10 +248,13 @@ body {
 }
 .tab-button {
   position: relative; /* Gjør at vi kan posisjonere pseudo-elementet korrekt */
-  height: 3em; /* Juster etter behov */
+  height: 2em; /* Juster etter behov */
   font-weight: normal;
   color: gray;
   transition: all 0.3s ease; /* Gjør overgangene mykere */
+  display: flex;     
+  justify-content: flex-start;     
+  flex-direction: column;
 }
 .tab-button::after {
   content: '';
