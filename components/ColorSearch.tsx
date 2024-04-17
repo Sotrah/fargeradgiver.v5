@@ -47,8 +47,8 @@ export const Search: React.FC<SearchProps> = ({ onResultsUpdate }) => {
             <CustomResults onResultsUpdate={onResultsUpdate}/>
             <CurrentRefinements transformItems={transformItems} />
 
-            <div className="grid grid-cols-4 gap-2">
-                <div className="col-span-3">
+            <div className="grid grid-cols-3 gap-2">
+                <div className="col-span-2">
                     <SearchBox translations={{ placeholder: 'Søk her' }}/>
                 </div>
 

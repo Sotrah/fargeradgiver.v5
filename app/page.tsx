@@ -14,6 +14,7 @@ import GetUrlColor from "@/components/GetUrlColor";
 import PromptRecolor from "@/components/PromptOptions"; 
 import ChosenColorInfo from "@/components/ChosenColorInfo";
 import MainImage from "@/components/MainImage";
+import DisclaimerBox from "@/components/Disclaimer";
 
 export default function Home() {
 
@@ -126,84 +127,95 @@ export default function Home() {
           </div>
 
             {/*Div-container til hovedelementene*/}
-            <div className="w-full h-full  main-grid ">
+            <div className="main-flexbox">
 
                 {/*Bildevelger*/}
-                <div className="lg:row-span-2 lg:order-1 relative rounded-lg bg-white p-3">
-                  <ImageGridCard selectedImage={selectedImage}
-                                  onImageSelect={handleImageSelect}/>
+                <div className="left-column lg:order-1 relative rounded-lg bg-white p-3 ">
+                    <ImageGridCard selectedImage={selectedImage}
+                                   onImageSelect={handleImageSelect}/>
                 </div>
+
+              {/*Midterste kolonne desktop*/}
+                <div className="middle-column lg:order-2 relative w-full h-full flex flex-col items-center justify-center">
 
                 {/*Hovedbildet  */}
-                <div className="lg:col-span-1 lg:row-span-1 lg:order-2 relative w-full h-full flex items-center justify-center bg-white rounded-lg p-3">
-                    <MainImage selectedColor={selectedColor} selectedImage={selectedImage} loading={loading} setLoading={setLoading} recolorOption={recolorOption} formattedHex={formattedHex}/>
+                    <div className="middle-column order-2 lg:order-1">
 
+                    <MainImage selectedColor={selectedColor} selectedImage={selectedImage} loading={loading}
+                               setLoading={setLoading} recolorOption={recolorOption} formattedHex={formattedHex}/>
 
-                </div>
+                    </div>
 
                 {/*Info om valgt farge*/}
+                    <div className="color-info order-3 lg:order-2 rounded-lg bg-white flex justify-center items-center p-3 max-h-36">
 
-                <div className="lg:col-span-1 lg:row-span-1 lg:order-5 rounded-lg bg-white flex justify-center items-center p-3 max-h-36">
-                    <ChosenColorInfo selectedColor={selectedColor} formattedHex={formattedHex}/>
+                        <ChosenColorInfo selectedColor={selectedColor} formattedHex={formattedHex}/>
+                    </div>
 
+                    {/*disclaimer*/}
+                    <div className="order-1 lg:order-3">
+                    <DisclaimerBox/>
+                    </div>
                 </div>
 
 
                 {/*Siste kolonne på desktopview*/}
-                <div className="lg:col-span-1 lg:row-span-2 lg:order-3 relative w-full bg-white rounded-lg p-3 ">
-                    
-                        {/*Tabs for fargevalg*/}
-                        <div
-                            className="flex-grow text-center lg:text-xs text-sm flex justify-between sticky top-0 z-50 bg-white p-2 rounded-lg">
-                            <button
-                                style={{
-                                    borderBottom: visibleModule === "modul2" ? "4px solid blue" : "",
-                                    fontWeight: visibleModule === "modul2" ? "bold" : "",
-                                    color: visibleModule === "modul2" ? "black" : "gray"
-                                }}
-                                onClick={() => setVisibleModule("modul2")}>
-                                Finn en farge
-                            </button>
-                            <button
-                                style={{
-                                    borderBottom: visibleModule === "modul3" ? "4px solid blue" : "",
-                                    fontWeight: visibleModule === "modul3" ? "bold" : "",
-                                    color: visibleModule === "modul3" ? "black" : "gray"
-                                }}
-                                onClick={() => setVisibleModule("modul3")}>
-                                Nylig brukt
-                            </button>
-                            <button
-                                style={{
-                                    borderBottom: visibleModule === "modul4" ? "4px solid blue" : "",
-                                    fontWeight: visibleModule === "modul4" ? "bold" : "",
-                                    color: visibleModule === "modul4" ? "black" : "gray"
-                                }}
-                                onClick={() => setVisibleModule("modul4")}>
-                                Dine favoritter
-                            </button>
-                        </div>
+                <div className="flex flex-col right-column lg:order-3 relative w-full h-auto bg-white rounded-lg p-3 ">
 
-                        {/*Søkebar og Fargevelger*/}
-                        <div className={`${visibleModule === "modul2" ? "" : "hidden"} flex-grow h-[calc(100%-4.2em)] lg:h-[calc(100%-3.8em)] rounded-lg pt-2`} > {/*Fjernet absolute og width */}
-                            
-                          <Search onResultsUpdate={handleResultsUpdate}/>
+                    {/*Tabs for fargevalg*/}
+                    <div
+                        className="flex-initial text-center lg:text-xs text-sm flex justify-between sticky top-0 z-50 bg-white p-2 rounded-lg">
+                        <button
+                            style={{
+                                borderBottom: visibleModule === "modul2" ? "3px solid blue" : "",
+                                fontWeight: visibleModule === "modul2" ? "bold" : "",
+                                color: visibleModule === "modul2" ? "black" : "gray"
+                            }}
+                            onClick={() => setVisibleModule("modul2")}>
+                            Alle farger
+                        </button>
+                        <button
+                            style={{
+                                borderBottom: visibleModule === "modul3" ? "3px solid blue" : "",
+                                fontWeight: visibleModule === "modul3" ? "bold" : "",
+                                color: visibleModule === "modul3" ? "black" : "gray"
+                            }}
+                            onClick={() => setVisibleModule("modul3")}>
+                            Nylig brukt
+                        </button>
+                        <button
+                            style={{
+                                borderBottom: visibleModule === "modul4" ? "3px solid blue" : "",
+                                fontWeight: visibleModule === "modul4" ? "bold" : "",
+                                color: visibleModule === "modul4" ? "black" : "gray"
+                            }}
+                            onClick={() => setVisibleModule("modul4")}>
+                            Dine favoritter
+                        </button>
+                    </div>
 
-                          <ColorPicker onColorSelect={handleColorSelect}
-                                          selectedColor={selectedColor}
-                                          colors={searchResults}/>
-                        </div>
+                    {/*Søkebar og Fargevelger*/}
+                    <div className={`${visibleModule === "modul2" ? "" : "hidden"} grow flex flex-col  rounded-lg pt-2`} > {/*Fjernet absolute og width */} 
+                      <Search onResultsUpdate={handleResultsUpdate}/>
+                      <ColorPicker onColorSelect={handleColorSelect}
+                                    selectedColor={selectedColor}
+                                    colors={searchResults}/>
+                    </div>
 
-                        {/*Nylig brukte farger*/}
-                        <div className={`${visibleModule === "modul3" ? "" : "hidden"} overflow-y-scroll absolute  h-[calc(100%-3.3em)] w-[calc(100%-1.5em)] recent-color-picker flex-grow rounded-lg`}>
-                            <RecentColorPicker onColorSelect={handleColorSelect} selectedColor={selectedColor} visibleModule={visibleModule}/>
-                        </div>
+                    {/*Nylig brukte farger*/}
+                    <div
+                        className={`${visibleModule === "modul3" ? "" : "hidden"} grow flex flex-col  rounded-lg pt-2`}>
+                        <RecentColorPicker onColorSelect={handleColorSelect} selectedColor={selectedColor}
+                                           visibleModule={visibleModule}/>
+                    </div>
 
-                        {/*Favorittfarger*/}
-                        <div className={`${visibleModule === "modul4" ? "" : "hidden"} overflow-y-scroll absolute  h-[calc(100%-3.3em)] w-[calc(100%-1.5em)] favorite-color-picker flex-grow rounded-lg`}>
-                            <FavoriteColorPicker onColorSelect={handleColorSelect} selectedColor={selectedColor} favoriteColors={favoriteColors}/>
-                        </div>
-                    
+                    {/*Favorittfarger*/}
+                    <div
+                        className={`${visibleModule === "modul4" ? "" : "hidden"} grow flex flex-col  rounded-lg pt-2`}>
+                        <FavoriteColorPicker onColorSelect={handleColorSelect} selectedColor={selectedColor}
+                                             favoriteColors={favoriteColors}/>
+                    </div>
+
                 </div>
 
             </div>
