@@ -65,8 +65,8 @@ const MainImage: React.FC<{
                     )}
                 </div>
                 <div className="flex justify-center items-center z-0 bg-gray-300 rounded aspect-[4/3]">
-                    <span className="desktop-text">Velg et bilde til venstre eller last opp ditt eget.</span>
-                    <span className="mobile-text">Velg et bilde over eller last opp ditt eget.</span>
+                    <span className="desktop-text">Velg et bilde til venstre eller last opp ditt eget</span>
+                    <span className="mobile-text">Velg et bilde over eller last opp ditt eget</span>
                 </div>
             </div>
         </div>
