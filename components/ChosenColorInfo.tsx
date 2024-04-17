@@ -8,12 +8,12 @@ const ChosenColorInfo: React.FC<{
     return (
         <div className='flex-1'>
             {selectedColor && (
-                <div style={{display: 'flex', alignItems: 'center', gap: '15px'}}>
+                <div style={{display: 'flex', alignItems: 'center', gap: '1rem'}}>
                     <div style={{
                         backgroundColor: `#${formattedHex}`,
-                        width: '60px',
-                        height: '60px',
-                        borderRadius: '8px',
+                        width: '3.5rem',
+                        height: '3.5rem',
+                        borderRadius: '1rem',
                     }}>
                         <img src="/jernia-paint-blob.png" alt="Paint blob"/>
                     </div>
@@ -23,7 +23,7 @@ const ChosenColorInfo: React.FC<{
                     </div>
                     <div>
                         <button
-                            className="px-6 xl:px-10 lg:px-2 py-1 md:py-2 bg-green-500 hover:bg-green-700 text-white rounded"
+                            className="w-20 h-12 bg-[#198009] hover:bg-[#206116] text-white rounded"
                             onClick={() => window.open(('https://www.jernia.no/farger/' + selectedColor.code), '_blank')}>
                             Kjøp
                         </button>
@@ -31,9 +31,9 @@ const ChosenColorInfo: React.FC<{
                 </div>
             )}
             {!selectedColor && (
-                <div className="flex items-center justify-center text-center">
-                    <span className="desktop-text">Velg en farge til høyre for å redigere bildet, og velg et annet bilde eller laste opp ditt eget til venstre.</span>
-                    <span className="mobile-text">Velg en farge under for å redigere bildet, og velg et annet bilde eller last opp ditt eget øverst.</span>
+                <div className="flex items-center justify-center text-cente h-14">
+                    <span className="desktop-text">Velg en farge til høyre for å redigere bildet.</span>
+                    <span className="mobile-text">Velg en farge for å redigere bildet.</span>
                 </div>
 
             )}

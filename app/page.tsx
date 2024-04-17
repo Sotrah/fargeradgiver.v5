@@ -130,13 +130,13 @@ export default function Home() {
             <div className="main-flexbox">
 
                 {/*Bildevelger*/}
-                <div className="left-column lg:order-1 relative rounded-lg bg-white p-3 ">
+                <div className="left-column lg:order-1 relative rounded bg-white p-3 ">
                     <ImageGridCard selectedImage={selectedImage}
                                    onImageSelect={handleImageSelect}/>
                 </div>
 
               {/*Midterste kolonne desktop*/}
-                <div className="middle-column lg:order-2 relative w-full h-full flex flex-col items-center justify-center">
+                <div className="middle-column lg:order-2 relative w-full h-full flex flex-col items-stretch justify-center">
 
                 {/*Hovedbildet  */}
                     <div className="middle-column order-2 lg:order-1">
@@ -147,7 +147,7 @@ export default function Home() {
                     </div>
 
                 {/*Info om valgt farge*/}
-                    <div className="color-info order-3 lg:order-2 rounded-lg bg-white flex justify-center items-center p-3 max-h-36">
+                    <div className="color-info order-3 lg:order-2 rounded bg-white flex justify-center items-center p-3 max-h-36">
 
                         <ChosenColorInfo selectedColor={selectedColor} formattedHex={formattedHex}/>
                     </div>
@@ -160,12 +160,14 @@ export default function Home() {
 
 
                 {/*Siste kolonne på desktopview*/}
-                <div className="flex flex-col right-column lg:order-3 relative w-full h-auto bg-white rounded-lg p-3 ">
+
+                <div className="flex flex-col right-column lg:order-3 relative w-full h-auto bg-white rounded p-3 ">
                     <span className="text-md font-bold mb-4">Velg farge</span>
 
                     {/*Tabs for fargevalg*/}
                     <div
                         className="tab-container text-sm">
+
                         <button
                             className={`tab-button ${visibleModule === "modul2" ? "selected" : ""}`}
                             onClick={() => setVisibleModule("modul2")}>
@@ -184,24 +186,26 @@ export default function Home() {
                     </div>
 
                     {/*Søkebar og Fargevelger*/}
+
                     <div
-                        className={`${visibleModule === "modul2" ? "" : "hidden"} grow flex flex-col  rounded-lg pt-4`}>
+                        className={`${visibleModule === "modul2" ? "" : "hidden"} grow flex flex-col  rounded pt-4`}>
                         <Search onResultsUpdate={handleResultsUpdate}/>
                         <ColorPicker onColorSelect={handleColorSelect}
                                      selectedColor={selectedColor}
                                      colors={searchResults}/>
+
                     </div>
 
                     {/*Nylig brukte farger*/}
                     <div
-                        className={`${visibleModule === "modul3" ? "" : "hidden"} grow flex flex-col  rounded-lg pt-2`}>
+                        className={`${visibleModule === "modul3" ? "" : "hidden"} grow flex flex-col  rounded pt-2`}>
                         <RecentColorPicker onColorSelect={handleColorSelect} selectedColor={selectedColor}
                                            visibleModule={visibleModule}/>
                     </div>
 
                     {/*Favorittfarger*/}
                     <div
-                        className={`${visibleModule === "modul4" ? "" : "hidden"} grow flex flex-col  rounded-lg pt-2`}>
+                        className={`${visibleModule === "modul4" ? "" : "hidden"} grow flex flex-col  rounded pt-2`}>
                         <FavoriteColorPicker onColorSelect={handleColorSelect} selectedColor={selectedColor}
                                              favoriteColors={favoriteColors}/>
                     </div>
