@@ -30,6 +30,7 @@ export default function Home() {
   const[colorsAreLoaded, setColorsAreLoaded] = useState(false);
   const [recolorOption, setRecolorOption] = useState("All the walls and every wall"); // Default value can be adjusted
 
+
   const handleResultsUpdate = (hits: HitProps[]) => {
     // Convert HitProps[] to ColorType[]
     const convertedResults = mapHitsToColorType(hits);
@@ -61,7 +62,9 @@ export default function Home() {
         setLoading(false);
     }
     setSelectedColor(selectedColor)
-  }  
+  }
+
+
 
   return (
     <FavoriteColorContext.Provider value={{ favoriteColors, setFavoriteColors }}>
@@ -135,26 +138,28 @@ export default function Home() {
                                    onImageSelect={handleImageSelect}/>
                 </div>
 
-              {/*Midterste kolonne desktop*/}
-                <div className="middle-column lg:order-2 relative w-full h-full flex flex-col items-stretch justify-center">
+                {/*Midterste kolonne desktop*/}
+                <div
+                    className="middle-column lg:order-2 relative w-full h-full flex flex-col items-stretch justify-center">
 
-                {/*Hovedbildet  */}
+                    {/*Hovedbildet  */}
                     <div className="middle-column order-2 lg:order-1">
 
-                    <MainImage selectedColor={selectedColor} selectedImage={selectedImage} loading={loading}
-                               setLoading={setLoading} recolorOption={recolorOption} formattedHex={formattedHex}/>
+                        <MainImage selectedColor={selectedColor} selectedImage={selectedImage} loading={loading}
+                                   setLoading={setLoading} recolorOption={recolorOption} formattedHex={formattedHex}/>
 
                     </div>
 
-                {/*Info om valgt farge*/}
-                    <div className="color-info order-3 lg:order-2 rounded bg-white flex justify-center items-center p-3 max-h-36">
+                    {/*Info om valgt farge desktop*/}
+                    <div
+                        className="color-info-lg order-3 lg:order-2 rounded bg-white flex justify-center items-center p-3 max-h-36">
 
                         <ChosenColorInfo selectedColor={selectedColor} formattedHex={formattedHex}/>
                     </div>
 
                     {/*disclaimer*/}
                     <div className="order-1 lg:order-3">
-                    <DisclaimerBox/>
+                        <DisclaimerBox/>
                     </div>
                 </div>
 
@@ -162,12 +167,11 @@ export default function Home() {
                 {/*Siste kolonne på desktopview*/}
 
                 <div className="flex flex-col right-column lg:order-3 relative w-full h-auto bg-white rounded p-3 ">
-                    <span className="text-md font-bold mb-4">Velg farge</span>
+                    <span className="text-md font-bold mb-4 hidden lg:block">Velg farge</span>
 
                     {/*Tabs for fargevalg*/}
                     <div
                         className="tab-container text-sm">
-
                         <button
                             className={`tab-button ${visibleModule === "modul2" ? "selected" : ""}`}
                             onClick={() => setVisibleModule("modul2")}>
@@ -181,7 +185,7 @@ export default function Home() {
                         <button
                             className={`tab-button ${visibleModule === "modul4" ? "selected" : ""}`}
                             onClick={() => setVisibleModule("modul4")}>
-                            Dine favoritter
+                            Favoritter
                         </button>
                     </div>
 
@@ -214,6 +218,14 @@ export default function Home() {
 
             </div>
         </div>
+
+          {/*Info om valgt farge på mobil*/}
+          <div
+              className="color-info-sm lg:hidden rounded bg-white flex justify-center items-center p-3 max-h-36 w-full">
+
+              <ChosenColorInfo selectedColor={selectedColor} formattedHex={formattedHex}/>
+          </div>
+
       </div>
     </FavoriteColorContext.Provider>
   );
