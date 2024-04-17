@@ -80,10 +80,10 @@ export const Search: React.FC<SearchProps> = ({ onResultsUpdate }) => {
             <div className="flex space-x-2 bg-white py-1">
                 <ClearRefinements
                     translations={{ reset: "Nullstill" }}
-                    className="text-xs  text-white rounded-full cursor-pointer"
+                    className="text-xs text-white rounded-full cursor-pointer"
                 />
                 <div className="flex overflow-x-auto whitespace-nowrap">
-                    <CurrentRefinements transformItems={transformItems}/>
+                    <CurrentRefinements transformItems={transformItems} className="flex flex-wrap gap-2"/>
                 </div>
             </div>
 
@@ -93,7 +93,7 @@ export const Search: React.FC<SearchProps> = ({ onResultsUpdate }) => {
                     translations={{ reset: 'Tilbakestill alle filtre' }}
                     className="px-4 py-2 bg-white hover:bg-gray-100 text-gray-800 rounded"
                 />
-                <RefinementList attribute="collections.name"/>
+                <RefinementList attribute="collections.name" className="text-xlg"/>
                 <button onClick={() => setIsCollapsed(true)} className="reset-button">
                     Lukk
                 </button>
