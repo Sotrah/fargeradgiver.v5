@@ -106,7 +106,7 @@ const ImageGridCard: React.FC<{
                 {images.map((src, index) => (
                     <div
                         key={index}
-                        className={`rounded flex aspect-[4/3] items-center overflow-hidden relative border-2 ${selectedGridIndex === index ? 'border-black' : 'border-transparent'}  hover:border-gray-500`}
+                        className={`rounded flex aspect-[4/3] items-center overflow-hidden relative border-[3px] ${selectedGridIndex === index ? 'border-gray-600' : 'hover:border-gray-400 border-transparent'}`}
                         onClick={() => handleImageClick(index)}
                     >
                         <CloudinaryWrapper
