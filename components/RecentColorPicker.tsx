@@ -41,7 +41,7 @@ const RecentColorPicker: React.FC<{ selectedColor: ColorType | null, visibleModu
     };
 
     return (
-        <div className="flex-auto grid h-20 auto-rows-max grid-cols-3 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-3 lg:gap-2 overflow-auto  rounded">
+        <div className="flex-auto grid h-20 auto-rows-max grid-cols-3 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-3 lg:gap-2 overflow-y-auto  rounded">
             {recentColors.map((colorItem, index) => (
                 <ColorCard key={index} colorItem={colorItem} handleColorClick={handleColorClick} selectedColor={selectedColor} />
             ))}
