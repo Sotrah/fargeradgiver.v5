@@ -35,8 +35,10 @@ interface SearchProps {
 const transformItems: CurrentRefinementsProps['transformItems'] = (items) => {
     return items.map(item => ({
         ...item,
-        label: item.label.replace(/^[^:]+: /, '')  // Removes everything before and after the ":".
-    }));
+        label: item.label.replace(/^[^:]+: /, ''),  // Removes everything before and after the ":".
+        id: item.attribute + ':' + item.label // Legg til en unik ID basert på både attributt og label
+
+    }))
 };
 export const Search: React.FC<SearchProps> = ({ onResultsUpdate }) => {
     const [isCollapsed, setIsCollapsed] = useState(true); // Default to collapsed
@@ -67,17 +69,21 @@ export const Search: React.FC<SearchProps> = ({ onResultsUpdate }) => {
         <InstantSearch searchClient={searchClient} indexName="colours_dump">
             <Configure hitsPerPage={500}/>
             <CustomResults onResultsUpdate={onResultsUpdate}/>
-            <CurrentRefinements transformItems={transformItems}/>
 
             <div className="grid grid-cols-3 gap-2">
                 <div className="col-span-2">
                     <SearchBox translations={{placeholder: 'Søk her'}}/>
+
                 </div>
 
                 <button onClick={toggleCollapse}
                         className="text-sm lg:text-xs xl:text-sm border-2 bg-white hover:border-gray-500 rounded-lg">
                     {isCollapsed ? 'Vis filter' : 'Skjul filter'}
                 </button>
+                <CurrentRefinements transformItems={transformItems}/>
+
+
+
             </div>
 
             {/* Slideout panel for the filters */}
@@ -91,6 +97,7 @@ export const Search: React.FC<SearchProps> = ({ onResultsUpdate }) => {
                 <button onClick={() => setIsCollapsed(true)} className="reset-button">
                     Lukk
                 </button>
+
             </div>
         </InstantSearch>
     );
