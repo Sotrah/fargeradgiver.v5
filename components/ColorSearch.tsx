@@ -13,6 +13,7 @@ interface CustomResultsProps{
 
 }
 
+
 const CustomResultsComponent: React.FC<CustomResultsProps> = ({searchResults, onResultsUpdate }) => {
     useEffect(() => {
         if (searchResults && searchResults.hits.length > 0) {
@@ -40,7 +41,28 @@ const transformItems: CurrentRefinementsProps['transformItems'] = (items) => {
 export const Search: React.FC<SearchProps> = ({ onResultsUpdate }) => {
     const [isCollapsed, setIsCollapsed] = useState(true); // Default to collapsed
 
+    // Oppdaterer useEffect for å håndtere klikk utenfor filter-panelet
+    useEffect(() => {
+        const handleOutsideClick = (event: MouseEvent) => {
+            const panelElement = document.querySelector('.filter-panel') as HTMLDivElement;
+            // Sjekker om panelElement eksisterer og om det ikke inneholder klikket mål
+            if (panelElement && !panelElement.contains(event.target as Node)) {
+                setIsCollapsed(true);
+            }
+        };
+
+        // Legger til event listener hvis panel er åpent
+        if (!isCollapsed) {
+            document.addEventListener('click', handleOutsideClick);
+        }
+
+        // Opprydning: fjerner event listener
+        return () => {
+            document.removeEventListener('click', handleOutsideClick);
+        };
+    }, [isCollapsed]); // Avhenger av isCollapsed for å legge til/fjerne listener
     const toggleCollapse = () => setIsCollapsed(!isCollapsed); // Toggle function
+
     return (
         <InstantSearch searchClient={searchClient} indexName="colours_dump">
             <Configure hitsPerPage={500}/>
