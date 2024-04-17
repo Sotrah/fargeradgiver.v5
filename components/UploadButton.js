@@ -5,10 +5,12 @@ const UploadButton = ({ onUploadSuccess }) => {
     const [cloudinaryResult, setCloudinaryResult] = useState(null);
 
     return (
-      <div className='h-full w-full'>
+      <div className='h-full'>
         <CldUploadButton
-            className='rounded-lg flex-initial bg-white hover:bg-gray-200 text-blue-950 border-2 border-blue-950 rounded-lg w-full h-full'
-            style={{height: '2em', width: '6em'}}
+            className='rounded-lg flex-initial text-white rounded-lg w-full h-full'
+            style={{height: '2em', width: '6em', backgroundColor: '#255199' }}
+            onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#17386d'} // Endrer bakgrunnsfarge ved hover
+            onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#255199'} // Endrer tilbake til vanlig farge
             uploadPreset="colorchangesigned"
             signatureEndpoint="/api/sign-cloudinary-params"
             onSuccess={(result, { widget }) => {
