@@ -360,6 +360,7 @@ body {
   bottom: 0;
   right: -100%; /* Start offscreen to the right */
   width: 300px; /* Adjust width as needed */
+  max-width: 80vw;
   height: 100vh;
   background-color: white;
   box-shadow: -2px 0 5px rgba(0,0,0,0.5);
