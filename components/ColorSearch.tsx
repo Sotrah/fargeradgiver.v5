@@ -79,7 +79,7 @@ export const Search: React.FC<SearchProps> = ({ onResultsUpdate }) => {
                 </div>
                 <button onClick={toggleCollapse}
                         className="text-sm lg:text-xs xl:text-sm border-2 bg-white hover:border-gray-500 rounded">
-                    {isCollapsed ? 'Vis filter' : 'Skjul filter'}
+                    Vis filtre
                 </button>
             </div>
 
