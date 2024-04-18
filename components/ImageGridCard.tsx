@@ -96,7 +96,7 @@ const ImageGridCard: React.FC<{
                         style={{zIndex: 1000, width: '350px'}}
                     >
                     <div className="flex justify-end">
-                        <button onClick={() => setShowPopup(false)} className="text-lg">×</button>
+                        <button onClick={() => setShowPopup(false)} className="text-lg absolute">×</button>
                     </div>
                     <p>Tips til å ta gode bilder:</p>
                     <ul>
