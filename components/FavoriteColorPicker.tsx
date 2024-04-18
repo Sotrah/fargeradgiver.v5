@@ -32,6 +32,11 @@ const FavoriteColorPicker: React.FC<{
             {favoriteColors.map((colorItem, index) => (
                 <ColorCard key={index} colorItem={colorItem} handleColorClick={handleColorClick} selectedColor={selectedColor} />
             ))}
+            {favoriteColors.length == 0 && (
+                <div className='col-span-3 p-3 text-center'>
+                    <p>Se dine favoritte fargene her ved å trykke på en hjerteknappe i alle farger</p>
+                </div>
+            )}
         </div>
     );
 };

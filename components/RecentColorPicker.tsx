@@ -45,6 +45,11 @@ const RecentColorPicker: React.FC<{ selectedColor: ColorType | null, visibleModu
             {recentColors.map((colorItem, index) => (
                 <ColorCard key={index} colorItem={colorItem} handleColorClick={handleColorClick} selectedColor={selectedColor} />
             ))}
+            {recentColors.length == 0 && (
+                <div className='col-span-3 p-3 text-center'>
+                    <p>Se dine nylige brukte fargene her etter du har valgt farger i alle farger</p>
+                </div>
+            )}
         </div>
     );
 };

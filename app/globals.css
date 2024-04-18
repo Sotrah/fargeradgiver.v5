@@ -433,6 +433,14 @@ body {
 
 }
 
+.ais-SearchBox-input {
+  box-shadow: none !important;
+  border: 2px solid #e5e7eb !important;
+}
+.ais-SearchBox-input:focus {
+  border-color: #9ca3af !important;
+}
+
 .reset-button:hover {
   background-color: #e0e0e0;
 }

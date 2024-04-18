@@ -8,8 +8,8 @@ const UploadButton = ({ onUploadSuccess }) => {
       <div className='h-full'>
         <CldUploadButton
             id="uploadButton"
-            className='rounded flex-initial text-white text-xs w-full h-full'
-            style={{height: '2rem', width: '5rem', backgroundColor: '#255199' }}
+            className='rounded flex-initial text-white text-xs w-20 h-10 lg:w-[3.75rem] xl:w-20 lg: h-8'
+            style={{backgroundColor: '#255199' }}
             onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#17386d'} // Endrer bakgrunnsfarge ved hover
             onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#255199'} // Endrer tilbake til vanlig farge
             uploadPreset="colorchangesigned"
