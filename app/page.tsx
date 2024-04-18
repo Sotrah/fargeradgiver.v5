@@ -140,7 +140,7 @@ export default function Home() {
 
                 {/*Midterste kolonne desktop*/}
                 <div
-                    className="middle-column lg:order-2 relative w-full h-full flex flex-col items-stretch justify-center">
+                    className="middle-column lg:order-2 relative w-full h-full flex flex-col items-stretch justify-center" id="middle-column">
 
                     {/*Hovedbildet  */}
                     <div className="middle-column order-2 lg:order-1">
@@ -197,7 +197,6 @@ export default function Home() {
                         <ColorPicker onColorSelect={handleColorSelect}
                                      selectedColor={selectedColor}
                                      colors={searchResults}/>
-
                     </div>
 
                     {/*Nylig brukte farger*/}

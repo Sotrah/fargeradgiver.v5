@@ -56,7 +56,8 @@
 
   }
   .right-column {
-    height: 50vh;
+   height: 50vh;
+   min-height: 28rem;
   }
 
   .color-info-lg {
@@ -275,12 +276,6 @@ body {
 .tab-button.selected {
   font-weight: semibold;
   color: black;
-}
-
-@media (max-width: 1023px) {
-  .tab-button {
-    font-size: medium;
-  }
 }
 
 

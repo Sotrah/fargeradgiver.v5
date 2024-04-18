@@ -52,7 +52,7 @@ const ImageGridCard: React.FC<{
             setSelectedGridIndex(clickedIndex);
             console.log("Selected image: " + images[clickedIndex]);
             onImageSelect(images[clickedIndex]);
-            const element = document.getElementById("right-column");
+            const element = document.getElementById("middle-column");
             if (element) {
                 element.scrollIntoView();
             }
