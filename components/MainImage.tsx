@@ -65,12 +65,20 @@ const MainImage: React.FC<{
                     )}
                 </div>
                 <div className="flex justify-center items-center z-0 bg-gray-300 rounded aspect-[4/3]">
-                    <span className="desktop-text">Velg et bilde til venstre eller last opp ditt eget</span>
-                    <span className="mobile-text">Velg et bilde over eller&nbsp;</span>
-                    <button className="underline" 
-                    onClick={() => document.getElementById('uploadButton')?.click()}>
-                        last opp ditt eget
-                    </button>
+                    <span className="desktop-text">
+                        Velg et bilde til venstre eller&nbsp;
+                        <button className="underline" 
+                        onClick={() => document.getElementById('uploadButton')?.click()}>
+                            last opp ditt eget
+                        </button>
+                    </span>
+                    <span className="mobile-text">Velg et bilde over eller&nbsp;
+                        <button className="underline" 
+                        onClick={() => document.getElementById('uploadButton')?.click()}>
+                            last opp ditt eget
+                        </button>
+                    </span>
+                    
                 </div>
             </div>
         </div>
