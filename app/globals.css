@@ -73,7 +73,7 @@
   .color-info-sm {
     box-shadow: 0 -5px 5px -5px rgba(0,0,0,0.2);
     position: fixed;
-    bottom: -10%;
+    bottom: -15%;
     transition: bottom 0.3s ease-in-out;
 
   }
@@ -337,37 +337,37 @@ body {
   justify-content: center;
 }
 .colorName {
-  font-size: 1em;
+  font-size: 0.875rem;
   font-weight: bold;
 }
 .colorCode {
-  font-size: 0.75em;
+  font-size: 0.625rem;
 }
 
 @media (min-width: 600px) {
   .colorName {
-    font-size: 18px;
+    font-size: 1.125rem;
   }
   .colorCode {
-    font-size: 16px;
+    font-size: 1rem;
   }
 }
 
 @media (min-width: 1024px) {
   .colorName {
-    font-size: 14px;
+    font-size: 0.875rem;
   }
   .colorCode {
-    font-size: 12px;
+    font-size: 0.75rem;
   }
 }
 
 @media (min-width: 1292px) {
   .colorName {
-    font-size: 18px;
+    font-size: 1.125rem;
   }
   .colorCode {
-    font-size: 16px;
+    font-size: 1rem;
   }
 }
 

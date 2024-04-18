@@ -9,11 +9,8 @@ const ChosenColorInfo: React.FC<{
         <div className='flex-1 max-w-[550px]'>
             {selectedColor && (
                 <div style={{display: 'flex', alignItems: 'center', gap: '1rem'}}>
-                    <div style={{
+                    <div className="w-11 h-11 lg:w-14 lg:h-14 rounded" style={{
                         backgroundColor: `#${formattedHex}`,
-                        width: '3.5rem',
-                        height: '3.5rem',
-                        borderRadius: '1rem',
                     }}>
                         <img src="/jernia-paint-blob.png" alt="Paint blob"/>
                     </div>
@@ -23,7 +20,7 @@ const ChosenColorInfo: React.FC<{
                     </div>
                     <div>
                         <button
-                            className="w-20 h-12 bg-[#198009] hover:bg-[#206116] text-white rounded"
+                            className="w-16 h-10 lg:w-20 lg:h-12 bg-[#198009] hover:bg-[#206116] text-white rounded"
                             onClick={() => window.open(('https://www.jernia.no/farger/' + selectedColor.code), '_blank')}>
                             Kjøp
                         </button>
@@ -31,7 +28,7 @@ const ChosenColorInfo: React.FC<{
                 </div>
             )}
             {!selectedColor && (
-                <div className="flex items-center justify-center text-cente h-14">
+                <div className="flex items-center justify-center text-cente h-11 lg:h-14">
                     <span className="desktop-text">Velg en farge til høyre for å redigere bildet</span>
                     <span className="mobile-text">Velg en farge for å redigere bildet</span>
                 </div>
