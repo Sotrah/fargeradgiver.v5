@@ -38,7 +38,6 @@ var currentRefinements: any[] = [];
 
 const transformItems: CurrentRefinementsProps['transformItems'] = (items) => {
     currentRefinements = items;
-    console.log(currentRefinements);
     return items.map(item => ({
         ...item,
         label: item.label.replace(/^[^:]+: /, ''),  // Removes everything before and after the ":".
@@ -106,7 +105,7 @@ export const Search: React.FC<SearchProps> = ({ onResultsUpdate }) => {
                 />
                 <RefinementList attribute="collections.name" className="text-xlg"/>
                 <button onClick={() => setIsCollapsed(true)} className="reset-button">
-                    Lukk
+                    Vis resultatene
                 </button>
             </div>
         </InstantSearch>

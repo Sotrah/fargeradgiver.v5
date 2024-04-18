@@ -6,6 +6,7 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 246, 249, 255;
   --background-end-rgb: 255, 255, 255;
+  scroll-behavior: smooth;
 
 }
 /* Basestyling for flexbox layout */
@@ -71,7 +72,9 @@
   .color-info-sm {
     box-shadow: 0 -5px 5px -5px rgba(0,0,0,0.2);
     position: fixed;
-    bottom: 0;
+    bottom: -10%;
+    transition: bottom 0.3s ease-in-out;
+
   }
 
 }

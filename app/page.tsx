@@ -166,7 +166,7 @@ export default function Home() {
 
                 {/*Siste kolonne på desktopview*/}
 
-                <div className="flex flex-col right-column lg:order-3 relative w-full h-auto bg-white rounded p-3 ">
+                <div className="flex flex-col right-column lg:order-3 relative w-full h-auto bg-white rounded p-3 " id="right-column">
                     <span className="text-md font-bold mb-4 hidden lg:block">Velg farge</span>
 
                     {/*Tabs for fargevalg*/}
@@ -221,10 +221,9 @@ export default function Home() {
 
           {/*Info om valgt farge på mobil*/}
           <div
-              className="color-info-sm lg:hidden rounded bg-white flex justify-center z-50 items-center p-3 max-h-36 w-full">
+              className={`${(selectedImage || selectedColor) ? "!bottom-[0px]" : ""} color-info-sm lg:hidden rounded bg-white flex justify-center z-50 items-center p-3 max-h-36 w-full`}>
               <ChosenColorInfo selectedColor={selectedColor} formattedHex={formattedHex}/>
           </div>
-
       </div>
     </FavoriteColorContext.Provider>
   );
