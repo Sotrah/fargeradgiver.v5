@@ -98,13 +98,13 @@ const ImageGridCard: React.FC<{
                     <div className="flex justify-end">
                         <button onClick={() => setShowPopup(false)} className="text-lg absolute">×</button>
                     </div>
-                    <p>Tips til å ta gode bilder:</p>
-                    <ul>
-                        <li> - Liggende format</li>
-                        <li> - Mye naturlig lys</li>
-                        <li> - Minst mulig rot foran veggflaten</li>
-                        <li> - Se på demobildene for inspirasjon</li>
+                    <p className="pb-2">Tips til å ta gode bilder:</p>
+                    <ul className="list-disc list-inside pb-2">
+                        <li>Liggende format</li>
+                        <li>Mye naturlig lys</li>
+                        <li>Minst mulig rot foran veggflaten</li>
                     </ul>
+                    <p>Se på demobildene for inspirasjon</p>
                 </div>
             )}
 
