@@ -16,7 +16,7 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en">
+        <html lang="no">
             <Script id="clarity-script" strategy="afterInteractive">
                 {`
                     (function(c,l,a,r,i,t,y){
