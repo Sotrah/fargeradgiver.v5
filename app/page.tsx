@@ -130,7 +130,8 @@ export default function Home() {
           </div>
 
             {/*Div-container til hovedelementene*/}
-            <div className="main-flexbox">
+              {/* Added role of main to meet WCAG requirements */}
+            <div role="main" className="main-flexbox">
 
                 {/*Bildevelger*/}
                 <div className="left-column lg:order-1 relative rounded bg-white p-3 ">

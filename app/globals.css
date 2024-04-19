@@ -435,13 +435,13 @@ body {
 
 .ais-SearchBox-input {
   box-shadow: none !important;
-  border: 2px solid #939393 !important;
+  border: 2px solid #939393 !important; /* Changed to meet WCAG contrast requirements */
   border-radius: 0.25rem !important;
 }
 .ais-SearchBox-input:focus {
-  border-color: #595959 !important;
+  border-color: #595959 !important; /* Changed to meet WCAG contrast requirements */
 }
 
 .reset-button:hover {
-  background-color: #e0e0e0;
+  background-color: #e0e0e0; 
 }
