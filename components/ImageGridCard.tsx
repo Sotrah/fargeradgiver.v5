@@ -118,7 +118,7 @@ const ImageGridCard: React.FC<{
 
             <div className="flex-auto grid auto-rows-max lg:grid-cols-1 grid-cols-3 gap-2 relative overflow-y-auto">
                 {images.map((src, index) => (
-                    <div
+                    <button
                         key={index}
                         className={`rounded flex aspect-[4/3] items-center overflow-hidden relative border-[3px] ${selectedGridIndex === index ? 'border-gray-600' : 'hover:border-gray-400 border-transparent'}`}
                         onClick={() => handleImageClick(index)}
@@ -132,7 +132,7 @@ const ImageGridCard: React.FC<{
                             layout="responsive"
                             objectFit="cover"
                         />
-                    </div>
+                    </button>
                 ))}
                 
             </div>

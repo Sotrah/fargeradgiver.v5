@@ -64,7 +64,18 @@ export const Search: React.FC<SearchProps> = ({ onResultsUpdate }) => {
         };
     }, [isCollapsed]);
 
-    const toggleCollapse = () => setIsCollapsed(!isCollapsed);
+    const filterPanel = document.getElementById('filter-panel');
+    const toggleCollapse = () => {
+            setIsCollapsed(!isCollapsed);
+            // if(filterPanel)
+            //     if (filterPanel.hasAttribute('inert')) {
+            //         filterPanel.removeAttribute('inert'); // Remove the inert attribute
+            //     } else {
+            //         filterPanel.setAttribute('inert', ''); // Add the inert attribute
+            //         filterPanel.tabIndex = -1; // Make the div unfocusable
+            //     }
+        }
+
 
     console.log();
 
@@ -98,15 +109,19 @@ export const Search: React.FC<SearchProps> = ({ onResultsUpdate }) => {
             </div>
 
             {/* Slideout panel for the filters */}
-            <div className={`filter-panel ${!isCollapsed ? 'active' : ''}`}>
-                <ClearRefinements
-                    translations={{ reset: 'Nullstill alle filtre' }}
-                    className="px-4 py-2 bg-white hover:bg-gray-100 text-gray-800 rounded"
-                />
-                <RefinementList attribute="collections.name" className="text-xlg"/>
-                <button onClick={() => setIsCollapsed(true)} className="reset-button">
-                    Vis resultatene
-                </button>
+            <div id="filter-panel" className={`filter-panel ${!isCollapsed ? 'active' : ''}`}>
+                {!isCollapsed && (
+                    <div>
+                        <ClearRefinements
+                            translations={{ reset: 'Nullstill alle filtre' }}
+                            className="px-4 py-2 bg-white hover:bg-gray-100 text-gray-800 rounded"
+                        />
+                        <RefinementList title="Filtre" attribute="collections.name" className="text-xlg"/>
+                        <button onClick={() => setIsCollapsed(true)} className="reset-button">
+                            Vis resultatene
+                        </button>
+                    </div>
+                )}
             </div>
         </InstantSearch>
     );

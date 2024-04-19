@@ -411,7 +411,6 @@ body {
 .filter-panel.active {
   right: 0; /* Move into view */
   font-size: 15px;
-
 }
 /* Reset knapp for filtre*/
 .reset-button {
