@@ -21,7 +21,7 @@ const MainImage: React.FC<{
            
             {/* The below section is dimmed until the image is loaded */}
             <div className={`w-full h-full relative`}>
-                <div className="w-full h-full absolute flex items-center justify-center z-30">
+                <div className="w-full h-full absolute flex items-center justify-center z-30 pointer-events-none">
                     <ScaleLoader
                         color="#000000"
                         speedMultiplier={0.5}
