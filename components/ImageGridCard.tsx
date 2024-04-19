@@ -109,7 +109,7 @@ const ImageGridCard: React.FC<{
             )}
 
 
-            <div className="flex-auto grid auto-rows-max lg:grid-cols-1 grid-cols-3 gap-2 relative overflow-y-auto`}">
+            <div className="flex-auto grid auto-rows-max lg:grid-cols-1 grid-cols-3 gap-2 relative overflow-y-auto">
                 {images.map((src, index) => (
                     <div
                         key={index}
