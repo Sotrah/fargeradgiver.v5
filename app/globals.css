@@ -436,6 +436,7 @@ body {
 .ais-SearchBox-input {
   box-shadow: none !important;
   border: 2px solid #e5e7eb !important;
+  border-radius: 0.25rem !important;
 }
 .ais-SearchBox-input:focus {
   border-color: #9ca3af !important;
