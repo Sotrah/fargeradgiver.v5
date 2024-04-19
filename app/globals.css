@@ -412,6 +412,12 @@ body {
   right: 0; /* Move into view */
   font-size: 15px;
 }
+
+/* Added visual feedback when checkboxes are tab selected for accessibility */
+.ais-RefinementList-checkbox:focus, .ais-GeoSearch-input:focus {
+  outline: currentcolor solid medium !important;
+}
+
 /* Reset knapp for filtre*/
 .reset-button {
   padding: 10px 20px;
