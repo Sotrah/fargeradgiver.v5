@@ -251,10 +251,10 @@ body {
   border-bottom: 2px solid #cccccc; /* Kontinuerlig grå linje */
 }
 .tab-button {
-  position: relative; /* Gjør at vi kan posisjonere pseudo-elementet korrekt */
-  height: 2em; /* Juster etter behov */
+  position: relative;
+  height: 2em; 
   font-weight: normal;
-  color: gray;
+  color: #727272; /* Edited to meet WCAG requirements */
   transition: all 0.3s ease; /* Gjør overgangene mykere */
   display: flex;     
   justify-content: flex-start;     
@@ -435,11 +435,11 @@ body {
 
 .ais-SearchBox-input {
   box-shadow: none !important;
-  border: 2px solid #e5e7eb !important;
+  border: 2px solid #939393 !important;
   border-radius: 0.25rem !important;
 }
 .ais-SearchBox-input:focus {
-  border-color: #9ca3af !important;
+  border-color: #595959 !important;
 }
 
 .reset-button:hover {
