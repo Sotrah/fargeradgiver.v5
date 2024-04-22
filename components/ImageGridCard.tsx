@@ -127,8 +127,8 @@ const ImageGridCard: React.FC<{
                             width={400}
                             height={300}
                             src={src}
-                            alt={`Bilde ${index + 1}`}
-                            title={`Bilde ${index + 1}`}
+                            alt={`Bilde nummer ${index + 1}. Velg et bilde for å redigere det.`}
+                            title={`Bilde nummer ${index + 1}. Velg et bilde for å redigere det.`}
                             layout="responsive"
                             objectFit="cover"
                         />

@@ -172,24 +172,30 @@ export default function Home() {
                     <span className="text-md font-bold mb-4 hidden lg:block">Velg farge</span>
 
                     {/*Tabs for fargevalg*/}
-                    <div
-                        className="tab-container text-sm">
-                        <button
+                    <ul role="tablist" aria-label="Fargevalg tabber"
+                      className="tab-container text-sm">
+                      <li role="presentation">
+                        <button role="tab"
                             className={`tab-button ${visibleModule === "modul2" ? "selected" : ""}`}
                             onClick={() => setVisibleModule("modul2")}>
                             Alle farger
                         </button>
-                        <button
+                      </li>
+                      <li role="presentation">
+                        <button role="tab"
                             className={`tab-button ${visibleModule === "modul3" ? "selected" : ""}`}
                             onClick={() => setVisibleModule("modul3")}>
                             Nylig brukt
                         </button>
-                        <button
+                      </li>
+                      <li role="presentation">
+                        <button role="tab"
                             className={`tab-button ${visibleModule === "modul4" ? "selected" : ""}`}
                             onClick={() => setVisibleModule("modul4")}>
                             Favoritter
                         </button>
-                    </div>
+                      </li>
+                    </ul>
 
                     {/*Søkebar og Fargevelger*/}
 

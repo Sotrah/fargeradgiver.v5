@@ -77,6 +77,7 @@ const ColorCard: React.FC<ColorCardProps> = ({ colorItem, handleColorClick, sele
                 style={{ backgroundColor: '#F9F9F9' }}
                 onClick={() => handleColorClick(colorItem)}
                 aria-label={`Select ${colorItem.shortName} color`}
+                title="Velg denne fargen"
             >
                 <div className="w-full h-2/3 flex items-center justify-center" style={{ backgroundColor: colorItem.hex }}>
                     {/* <div className="w-3/4 h-3/4 rounded" style={{ backgroundColor: colorItem.hex }}></div> */}
