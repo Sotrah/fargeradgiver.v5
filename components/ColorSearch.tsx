@@ -64,16 +64,8 @@ export const Search: React.FC<SearchProps> = ({ onResultsUpdate }) => {
         };
     }, [isCollapsed]);
 
-    const filterPanel = document.getElementById('filter-panel');
     const toggleCollapse = () => {
             setIsCollapsed(!isCollapsed);
-            // if(filterPanel)
-            //     if (filterPanel.hasAttribute('inert')) {
-            //         filterPanel.removeAttribute('inert'); // Remove the inert attribute
-            //     } else {
-            //         filterPanel.setAttribute('inert', ''); // Add the inert attribute
-            //         filterPanel.tabIndex = -1; // Make the div unfocusable
-            //     }
         }
 
 
