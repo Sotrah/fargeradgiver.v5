@@ -101,9 +101,8 @@ export const Search: React.FC<SearchProps> = ({ onResultsUpdate }) => {
             </div>
 
             {/* Slideout panel for the filters */}
-            <div id="filter-panel" className={`filter-panel ${!isCollapsed ? 'active' : ''}`}>
-                {!isCollapsed && (
-                    <div>
+            <div {...{ inert: !isCollapsed ? null : '' }}  id="filter-panel" className={`filter-panel ${!isCollapsed ? 'active pointer-events-none' : ''}`}>
+                    <div >
                         <ClearRefinements
                             translations={{ reset: 'Nullstill alle filtre' }}
                             className="px-4 py-2 bg-white hover:bg-gray-100 text-gray-800 rounded"
@@ -113,7 +112,6 @@ export const Search: React.FC<SearchProps> = ({ onResultsUpdate }) => {
                             Vis resultatene
                         </button>
                     </div>
-                )}
             </div>
         </InstantSearch>
     );
