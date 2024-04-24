@@ -47,7 +47,7 @@ const RecentColorPicker: React.FC<{ selectedColor: ColorType | null, visibleModu
             ))}
             {recentColors.length == 0 && (
                 <div className='col-span-3 p-3 text-center'>
-                    <p>Gå til "alle farger" for å velge farger, og kom tilbake hit om du vil finne dem igjen</p>
+                    <p>Gå til alle farger for å velge farger, og kom tilbake hit om du vil finne dem igjen</p>
                 </div>
             )}
         </div>
