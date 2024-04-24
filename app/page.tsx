@@ -130,10 +130,11 @@ export default function Home() {
           </div>
 
             {/*Div-container til hovedelementene*/}
-            <div className="main-flexbox">
+              {/* Added role of main to meet WCAG requirements */}
+            <div role="main" className="main-flexbox">
 
                 {/*Bildevelger*/}
-                <div className="left-column lg:order-1 relative rounded bg-white p-3 ">
+                <div role="bildevelger" className="left-column lg:order-1 relative rounded bg-white p-3 ">
                     <ImageGridCard selectedImage={selectedImage}
                                    onImageSelect={handleImageSelect}/>
                 </div>
@@ -143,7 +144,7 @@ export default function Home() {
                     className="middle-column lg:order-2 relative w-full h-full flex flex-col items-stretch justify-center" id="middle-column">
 
                     {/*Hovedbildet  */}
-                    <div className="middle-column order-2 lg:order-1">
+                    <div role="hovedbildet" className="middle-column order-2 lg:order-1">
 
                         <MainImage selectedColor={selectedColor} selectedImage={selectedImage} loading={loading}
                                    setLoading={setLoading} recolorOption={recolorOption} formattedHex={formattedHex}/>
@@ -152,13 +153,14 @@ export default function Home() {
 
                     {/*Info om valgt farge desktop*/}
                     <div
+                      role="info om valgt fargen"
                         className="color-info-lg order-3 lg:order-2 rounded bg-white flex justify-center items-center p-3 max-h-36">
 
                         <ChosenColorInfo selectedColor={selectedColor} formattedHex={formattedHex}/>
                     </div>
 
                     {/*disclaimer*/}
-                    <div className="order-1 lg:order-3">
+                    <div role="disclaimer" className="order-1 lg:order-3">
                         <DisclaimerBox/>
                     </div>
                 </div>
@@ -166,28 +168,34 @@ export default function Home() {
 
                 {/*Siste kolonne på desktopview*/}
 
-                <div className="flex flex-col right-column lg:order-3 relative w-full h-auto bg-white rounded p-3 " id="right-column">
+                <div role="fargevelger" className="flex flex-col right-column lg:order-3 relative w-full h-auto bg-white rounded p-3 " id="right-column">
                     <span className="text-md font-bold mb-4 hidden lg:block">Velg farge</span>
 
                     {/*Tabs for fargevalg*/}
-                    <div
-                        className="tab-container text-sm">
-                        <button
+                    <ul role="tablist" aria-label="Fargevalg tabber"
+                      className="tab-container text-sm">
+                      <li role="presentation">
+                        <button role="tab"
                             className={`tab-button ${visibleModule === "modul2" ? "selected" : ""}`}
                             onClick={() => setVisibleModule("modul2")}>
                             Alle farger
                         </button>
-                        <button
+                      </li>
+                      <li role="presentation">
+                        <button role="tab"
                             className={`tab-button ${visibleModule === "modul3" ? "selected" : ""}`}
                             onClick={() => setVisibleModule("modul3")}>
                             Nylig brukt
                         </button>
-                        <button
+                      </li>
+                      <li role="presentation">
+                        <button role="tab"
                             className={`tab-button ${visibleModule === "modul4" ? "selected" : ""}`}
                             onClick={() => setVisibleModule("modul4")}>
                             Favoritter
                         </button>
-                    </div>
+                      </li>
+                    </ul>
 
                     {/*Søkebar og Fargevelger*/}
 
@@ -219,7 +227,7 @@ export default function Home() {
         </div>
 
           {/*Info om valgt farge på mobil*/}
-          <div
+          <div role="info om valgt fargen på mobil"
               className={`${(selectedImage || selectedColor) ? "!bottom-[0px]" : ""} color-info-sm lg:hidden rounded bg-white flex justify-center z-50 items-center p-3 max-h-36 w-full`}>
               <ChosenColorInfo selectedColor={selectedColor} formattedHex={formattedHex}/>
           </div>

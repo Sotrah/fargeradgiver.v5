@@ -64,7 +64,10 @@ export const Search: React.FC<SearchProps> = ({ onResultsUpdate }) => {
         };
     }, [isCollapsed]);
 
-    const toggleCollapse = () => setIsCollapsed(!isCollapsed);
+    const toggleCollapse = () => {
+            setIsCollapsed(!isCollapsed);
+        }
+
 
     console.log();
 
@@ -98,15 +101,17 @@ export const Search: React.FC<SearchProps> = ({ onResultsUpdate }) => {
             </div>
 
             {/* Slideout panel for the filters */}
-            <div className={`filter-panel ${!isCollapsed ? 'active' : ''}`}>
-                <ClearRefinements
-                    translations={{ reset: 'Nullstill alle filtre' }}
-                    className="px-4 py-2 bg-white hover:bg-gray-100 text-gray-800 rounded"
-                />
-                <RefinementList attribute="collections.name" className="text-xlg"/>
-                <button onClick={() => setIsCollapsed(true)} className="reset-button">
-                    Vis resultatene
-                </button>
+            <div {...{ inert: isCollapsed ? '' : null }}  id="filter-panel" className={`filter-panel ${!isCollapsed ? 'active' : ''}`}>
+                    <div >
+                        <ClearRefinements
+                            translations={{ reset: 'Nullstill alle filtre' }}
+                            className="px-4 py-2 bg-white hover:bg-gray-100 text-gray-800 rounded"
+                        />
+                        <RefinementList title="Filtre" attribute="collections.name" className="text-xlg"/>
+                        <button onClick={() => setIsCollapsed(true)} className="reset-button">
+                            Vis resultatene
+                        </button>
+                    </div>
             </div>
         </InstantSearch>
     );

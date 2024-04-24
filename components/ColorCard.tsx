@@ -38,6 +38,7 @@ const ColorCard: React.FC<ColorCardProps> = ({ colorItem, handleColorClick, sele
                     handleFavoriteClick(colorItem); // Pass the color item to the handleFavoriteClick function
                 }}
                 aria-label={`Favorite ${colorItem.shortName}`}
+                title="Sett denne fargen i favoritter"
             >
                 <svg className="absolute bg-transparent" viewBox="0 0 100 100">
                     <circle cx="50" cy="50" r="49" fill="white" />
@@ -55,6 +56,7 @@ const ColorCard: React.FC<ColorCardProps> = ({ colorItem, handleColorClick, sele
                 <button
                     className="absolute opacity-80 top-1 left-1 w-[30%] h-[30%] bg-transparent z-10 flex items-center justify-center "
                     aria-label={`Deselect ${colorItem.shortName}`}
+                    title="Fjern valgt farge"
                     onClick={() => handleColorClick(colorItem)}
                 >
                     <svg className="absolute bg-transparent " viewBox="0 0 100 100">
@@ -75,6 +77,7 @@ const ColorCard: React.FC<ColorCardProps> = ({ colorItem, handleColorClick, sele
                 style={{ backgroundColor: '#F9F9F9' }}
                 onClick={() => handleColorClick(colorItem)}
                 aria-label={`Select ${colorItem.shortName} color`}
+                title="Velg denne fargen"
             >
                 <div className="w-full h-2/3 flex items-center justify-center" style={{ backgroundColor: colorItem.hex }}>
                     {/* <div className="w-3/4 h-3/4 rounded" style={{ backgroundColor: colorItem.hex }}></div> */}

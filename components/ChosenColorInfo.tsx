@@ -6,13 +6,13 @@ const ChosenColorInfo: React.FC<{
     formattedHex: string| null,
 } > = ({ selectedColor, formattedHex = () => {} }) => {
     return (
-        <div className='flex-1 max-w-[550px]'>
+        <div className='flex-1 max-w-[550px]' role="status">
             {selectedColor && (
                 <div style={{display: 'flex', alignItems: 'center', gap: '1rem'}}>
                     <div className="w-11 h-11 lg:w-14 lg:h-14 rounded" style={{
                         backgroundColor: `#${formattedHex}`,
                     }}>
-                        <img src="/jernia-paint-blob.png" alt="Paint blob"/>
+                        <img src="/jernia-paint-blob.png" alt={`Den valgte fargen: ${selectedColor.shortName}`}/>
                     </div>
                     <div style={{flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
                         <span className="colorName">{selectedColor.fullName}</span>

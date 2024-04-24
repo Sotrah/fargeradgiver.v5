@@ -21,32 +21,37 @@ const MainImage: React.FC<{
            
             {/* The below section is dimmed until the image is loaded */}
             <div className={`w-full h-full relative`}>
-                <div className="w-full h-full absolute flex items-center justify-center z-30">
+                <div className="w-full h-full absolute flex items-center justify-center z-30 pointer-events-none">
                     <ScaleLoader
                         color="#000000"
                         speedMultiplier={0.5}
                         loading={showSpinner}
+                        aria-label="Loading"
                     />
+                    <div role="status" className="sr-only">
+                        {showSpinner ? "Laster..." : "Ferdig!"}
+                    </div>
                 </div>
                 {/* CldImage is documented here: https://next.cloudinary.dev/cldimage/configuration
                         If there is an image and a selectedColor selected, transform it with Recolor */}
-                <div className={`absolute top-0 left-0 w-full h-full flex justify-center items-center z-20 rounded ${showSpinner ? "opacity-0" : ""} pointer-events-none`}>
-                    {selectedImage && selectedColor && (
+                {selectedImage && selectedColor && (
+                    <div className={`absolute top-0 left-0 w-full h-full flex justify-center items-center z-20 rounded ${showSpinner ? "opacity-0" : ""} `}>
                         <CldImage
                             placeholder="empty"
                             onLoad={() => setLoading(false)}
                             width='600'
                             height='400'
                             src={selectedImage}
-                            alt="Uploaded image"
+                            alt="Det valgte bildet, endret"
+                            title="Det valgte bilde, endret"
                             sizes="100vw"
                             className="rounded"
                             recolor={[`${recolorOption}`, formattedHex]}
                         />
-                    )}
-                </div>
-                <div className={`${showSpinner ? "opacity-50" : ""} absolute top-0 left-0 w-full h-full flex justify-center items-center z-10 rounded pointer-events-none`}>
-                    {selectedImage &&(
+                    </div>
+                )}
+                {selectedImage &&(
+                    <div className={`${showSpinner ? "opacity-50" : ""} absolute top-0 left-0 w-full h-full flex justify-center items-center z-10 rounded `}>
                         <CldImage
                             placeholder="empty"
                             onLoad={() =>
@@ -57,12 +62,14 @@ const MainImage: React.FC<{
                             width='600'
                             height='400'
                             src={selectedImage}
-                            alt="Uploaded image"
+                            alt="Det valgte bildet, uendret"
+                            title="Det valgte bildet, uendret"
                             sizes="100vw"
                             className="rounded"
                         />
-                    )}
-                </div>
+                    </div>
+                )}
+
                 <div className="flex justify-center items-center z-0 bg-gray-300 rounded aspect-[4/3]">
                     {!selectedImage &&(
                         <div>

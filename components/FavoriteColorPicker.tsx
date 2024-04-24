@@ -34,7 +34,7 @@ const FavoriteColorPicker: React.FC<{
             ))}
             {favoriteColors.length == 0 && (
                 <div className='col-span-3 p-3 text-center'>
-                    <p>Se dine favoritte fargene her ved å trykke på en hjerteknappe i alle farger</p>
+                    <p>Trykk på hjertet i hjørnet av dine favorittfarger, så vises de her</p>
                 </div>
             )}
         </div>

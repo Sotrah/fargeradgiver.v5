@@ -82,7 +82,7 @@ const UploadButton = ({ onUploadSuccess }) => {
                 }
             }}
         >
-            <p>Last opp</p>
+            Last opp
         </CldUploadButton>
       </div>
     );
