@@ -446,6 +446,9 @@ body {
 .ais-SearchBox-input:focus {
   border-color: #595959 !important; /* Changed to meet WCAG contrast requirements */
 }
+.ais-CurrentRefinements-delete:focus {
+  outline: currentcolor solid medium !important;
+}
 
 .reset-button:hover {
   background-color: #e0e0e0; 
