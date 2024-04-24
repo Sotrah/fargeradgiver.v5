@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect } from 'react';
 // import UploadButton from "../components/UploadButton";
 import dynamic from "next/dynamic";
 
+// Dynamic import of UploadButton for speedup
 const UploadButton = dynamic(() => import('./UploadButton'), { ssr: false });
 
 const ImageGridCard: React.FC<{
