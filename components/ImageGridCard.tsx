@@ -1,11 +1,7 @@
 'use client';
 import CloudinaryWrapper from "./CldImage";
 import React, { useState, useRef, useEffect } from 'react';
-// import UploadButton from "../components/UploadButton";
-import dynamic from "next/dynamic";
-
-// Dynamic import of UploadButton for speedup
-const UploadButton = dynamic(() => import('./UploadButton'), { ssr: true });
+import UploadButton from "../components/UploadButton";
 
 const ImageGridCard: React.FC<{
     selectedImage: String | null,
@@ -77,7 +73,7 @@ const ImageGridCard: React.FC<{
 
     return (
         <div className="lg:h-full flex flex-col justify-between gap-2">
-            <div className="flex justify-end items-center gap-2 min-h-8">
+            <div className="flex justify-end items-center gap-2">
                 <span className="mr-auto self-start text-md font-bold min-width-24">Velg bilde</span>
                 <div className="flex items-center">
                     <UploadButton onUploadSuccess={handleUploadSuccess}/>
