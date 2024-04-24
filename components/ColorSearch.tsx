@@ -101,7 +101,7 @@ export const Search: React.FC<SearchProps> = ({ onResultsUpdate }) => {
             </div>
 
             {/* Slideout panel for the filters */}
-            <div {...{ inert: !isCollapsed ? null : '' }}  id="filter-panel" className={`filter-panel ${!isCollapsed ? 'active pointer-events-none' : ''}`}>
+            <div {...{ inert: isCollapsed ? '' : null }}  id="filter-panel" className={`filter-panel ${!isCollapsed ? 'active' : ''}`}>
                     <div >
                         <ClearRefinements
                             translations={{ reset: 'Nullstill alle filtre' }}
