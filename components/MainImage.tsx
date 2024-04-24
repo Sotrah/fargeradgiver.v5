@@ -26,7 +26,11 @@ const MainImage: React.FC<{
                         color="#000000"
                         speedMultiplier={0.5}
                         loading={showSpinner}
+                        aria-label="Loading"
                     />
+                    <div role="status" className="sr-only">
+                        {showSpinner ? "Laster..." : "Ferdig!"}
+                    </div>
                 </div>
                 {/* CldImage is documented here: https://next.cloudinary.dev/cldimage/configuration
                         If there is an image and a selectedColor selected, transform it with Recolor */}
