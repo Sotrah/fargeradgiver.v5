@@ -9,7 +9,7 @@ selections to effectively tailor the aesthetics of their space.
 - **Color Picker:** Users can select colors from a comprehensive grid of color swatches.
 - **Recent Color Picker:** Displays recently selected colors for easy access.
 - **Favorite Color Picker:** Allows users to save and manage their favorite colors.
-- **Dynamic Image Rendering:** Users can upload room images and see real-time color changes.
+- **Dynamic Image Rendering:** Users can upload room images and change the color of the walls.
 - **Responsive Design:** Optimized for both desktop and mobile viewing.
 
 ## Technology Stack
