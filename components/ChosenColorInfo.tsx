@@ -1,3 +1,5 @@
+// ChosenColorInfo displays information about the selected color in a dedicated box
+
 import React from 'react';
 import { ColorType } from './ColorType';
 
@@ -5,6 +7,7 @@ const ChosenColorInfo: React.FC<{
     selectedColor: ColorType | null,
     formattedHex: string| null,
 } > = ({ selectedColor, formattedHex = () => {} }) => {
+
     return (
         <div className='flex-1 max-w-[550px]' role="status">
             {selectedColor && (
@@ -32,7 +35,6 @@ const ChosenColorInfo: React.FC<{
                     <span className="desktop-text">Velg en farge til høyre for å redigere bildet</span>
                     <span className="mobile-text">Velg en farge for å redigere bildet</span>
                 </div>
-
             )}
         </div>
     )

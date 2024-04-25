@@ -1,7 +1,8 @@
+// GetUrlColor retrieves a hex-code from the URL parameters
+
 import React, {useEffect, useState, Suspense} from "react";
 import { useSearchParams } from "next/navigation"
 import { ColorType } from "@/components/ColorType";
-
 
 const GetUrlColor: React.FC<{
     selectedColor: ColorType | null,
@@ -9,10 +10,7 @@ const GetUrlColor: React.FC<{
     onColorSelect: (color: ColorType | null) => void,
     handleColorSelect: (color: ColorType | null) => void,
     colors: ColorType[] } > = ({ selectedColor, onColorSelect, colorsAreLoaded, colors, handleColorSelect = () => {} }) => {
-    // Select color from URL if one is present
-    // use "?color=" and then the hexcode to select a color.
-    // This could easily be changed to the code of the color
-    // demo url: https://fargeradgiver-v4.vercel.app/?color=b99e6b
+
     const searchParams = useSearchParams();
 
     useEffect(() => {

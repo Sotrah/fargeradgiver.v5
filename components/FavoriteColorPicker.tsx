@@ -1,9 +1,10 @@
+// FavoriteColorPicker integrates with FavoriteColorContext to access and display a grid of favorite colors
+
 import React, { useEffect, useState } from 'react';
 import { ColorType } from "@/components/ColorType";
 import ColorCard from "@/components/ColorCard";
 import { useContext } from 'react';
 import { FavoriteColorContext } from "@/components/FavoriteColorContext";
-
 
 const FavoriteColorPicker: React.FC<{
     selectedColor: ColorType | null,
@@ -12,12 +13,10 @@ const FavoriteColorPicker: React.FC<{
 
     const { favoriteColors } = useContext(FavoriteColorContext);
 
-
-
     const handleColorClick = (colorItem: ColorType) => {
         if (selectedColor && selectedColor.hex === colorItem.hex) {
             console.log('Deselecting color');
-            onColorSelect(null); // remove selected color
+            onColorSelect(null);
             return false;
         }
         else {

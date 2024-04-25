@@ -1,3 +1,5 @@
+// ColorSearch integrates Algolia's search capabilities with an interface for handling search results and filters
+
 import React, {useEffect, useState} from 'react';
 import algoliasearch from 'algoliasearch/lite';
 import 'instantsearch.css/themes/satellite.css';
@@ -6,14 +8,11 @@ import {HitProps} from "@/components/ColorSearchHit";
 import {SearchResults} from "algoliasearch-helper";
 import {CurrentRefinementsProps} from "react-instantsearch";
 
-
 interface CustomResultsProps{
     searchState: any;
     searchResults: SearchResults<HitProps>;
     onResultsUpdate: (hits: HitProps[]) => null;
-
 }
-
 
 const CustomResultsComponent: React.FC<CustomResultsProps> = ({searchResults, onResultsUpdate }) => {
     useEffect(() => {
@@ -22,13 +21,11 @@ const CustomResultsComponent: React.FC<CustomResultsProps> = ({searchResults, on
         }
     }, [searchResults, onResultsUpdate]);
 
-    return null; // No rendering
+    return null;
 };
 
 const CustomResults = connectStateResults(CustomResultsComponent);
-
-
-const searchClient = algoliasearch('NOLK3JAMLX', 'fcde24d65b04aa23920ceb878b4362d9'); //Search-Only API key, Lite sikkerhetsfare
+const searchClient = algoliasearch('NOLK3JAMLX', 'fcde24d65b04aa23920ceb878b4362d9'); //Search-Only API key, low security risk
 
 interface SearchProps {
     onResultsUpdate: (hits: HitProps[]) => void;
@@ -40,12 +37,11 @@ const transformItems: CurrentRefinementsProps['transformItems'] = (items) => {
     currentRefinements = items;
     return items.map(item => ({
         ...item,
-        label: item.label.replace(/^[^:]+: /, ''),  // Removes everything before and after the ":".
-        
+        label: item.label.replace(/^[^:]+: /, ''),
     }))
 };
 export const Search: React.FC<SearchProps> = ({ onResultsUpdate }) => {
-    const [isCollapsed, setIsCollapsed] = useState(true); // Default to collapsed
+    const [isCollapsed, setIsCollapsed] = useState(true);
 
     useEffect(() => {
         const handleOutsideClick = (event: MouseEvent) => {
@@ -67,7 +63,6 @@ export const Search: React.FC<SearchProps> = ({ onResultsUpdate }) => {
     const toggleCollapse = () => {
             setIsCollapsed(!isCollapsed);
         }
-
 
     console.log();
 

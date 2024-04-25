@@ -1,3 +1,5 @@
+// ColorCard is a visual component representing each color with its name underneath
+
 import { ColorType } from "@/components/ColorType";
 import React, { useContext } from 'react';
 import { FavoriteColorContext, FavoriteColorContextType } from './FavoriteColorContext';
@@ -15,15 +17,15 @@ const ColorCard: React.FC<ColorCardProps> = ({ colorItem, handleColorClick, sele
         if (favoriteColors.includes(colorItem)) {
             const indexToRemove =favoriteColors.indexOf(colorItem);
             if (indexToRemove !== -1) {
-                const updatedFavoriteColors: ColorType[] = [...favoriteColors]; // Create a copy of the array
-                updatedFavoriteColors.splice(indexToRemove, 1); // Remove colorItem from the copy
-                setFavoriteColors(updatedFavoriteColors); // Update state with the modified array
+                const updatedFavoriteColors: ColorType[] = [...favoriteColors];
+                updatedFavoriteColors.splice(indexToRemove, 1);
+                setFavoriteColors(updatedFavoriteColors);
               }
             return false;
         }
         else {
-            const updatedFavoriteColors: ColorType[] = [...favoriteColors, colorItem]; // Add colorItem to a new copy of the array
-            setFavoriteColors(updatedFavoriteColors); // Update state with the modified array
+            const updatedFavoriteColors: ColorType[] = [...favoriteColors, colorItem];
+            setFavoriteColors(updatedFavoriteColors);
             return true;
         }
     };
@@ -34,8 +36,7 @@ const ColorCard: React.FC<ColorCardProps> = ({ colorItem, handleColorClick, sele
             <button
                 className="absolute opacity-80 top-1 right-1 w-[30%] h-[30%] bg-transparent z-10 flex items-center justify-center overflow-visible"
                 onClick={(event) => {
-                    // event.stopPropagation(); // Prevent the color card click event from triggering
-                    handleFavoriteClick(colorItem); // Pass the color item to the handleFavoriteClick function
+                    handleFavoriteClick(colorItem);
                 }}
                 aria-label={`Favorite ${colorItem.shortName}`}
                 title="Sett denne fargen i favoritter"
@@ -80,7 +81,6 @@ const ColorCard: React.FC<ColorCardProps> = ({ colorItem, handleColorClick, sele
                 title="Velg denne fargen"
             >
                 <div className="w-full h-2/3 flex items-center justify-center" style={{ backgroundColor: colorItem.hex }}>
-                    {/* <div className="w-3/4 h-3/4 rounded" style={{ backgroundColor: colorItem.hex }}></div> */}
                 </div>
                 <div className="w-full h-1/3 flex items-center justify-center text-xs text-center" style={{ lineHeight: '1' }}>
                     <span>{colorItem.shortName}</span>

@@ -1,3 +1,5 @@
+// MainImage displays the main image and includes a loading indicator
+
 import { ColorType } from './ColorType';
 import {ScaleLoader} from "react-spinners";
 import React, {useState} from "react";
