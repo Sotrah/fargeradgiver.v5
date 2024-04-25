@@ -1,3 +1,5 @@
+// ColorPicker presents a grid display of all available colors
+
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { ColorType } from "@/components/ColorType";
 import ColorCard from "@/components/ColorCard";
@@ -14,20 +16,19 @@ const ColorPicker: React.FC<{
     const handleColorClick = (colorItem: ColorType) => {
         if (selectedColor && selectedColor.hex === colorItem.hex) {
             console.log('Deselecting color');
-            onColorSelect(null); // remove selected color
+            onColorSelect(null);
             return false;
         } else {
-            onColorSelect(colorItem); // "Feed" the selected color to the parent component
+            onColorSelect(colorItem);
             console.log('Selected color:', colorItem);
             return true;
         }
     };
 
-    // Use `useCallback` to memoize the function, preventing excessive re-registrations
     const handleScroll = useCallback((event: Event) => {
-        const target = event.target as HTMLDivElement; // Type assertion for `target`
+        const target = event.target as HTMLDivElement;
         const { scrollTop, scrollHeight, clientHeight } = target;
-        if (scrollHeight - scrollTop <= clientHeight * 1.1) { // Trigger when within 10% of the bottom
+        if (scrollHeight - scrollTop <= clientHeight * 1.1) {
             if (displayCount < colors.length) {
                 setDisplayCount(prevCount => Math.min(prevCount + 21, colors.length));
             }
@@ -44,7 +45,7 @@ const ColorPicker: React.FC<{
                 }
             };
         }
-    }, [handleScroll]); // Include `handleScroll` in the dependency array
+    }, [handleScroll]);
 
     return (
         <div ref={loaderRef} className="flex-auto grid h-20 auto-rows-max grid-cols-3 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-3 lg:gap-2 overflow-y-scroll rounded ">

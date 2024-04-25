@@ -1,3 +1,5 @@
+// RecentColorPicker manages and displays a grid of recently selected colors
+
 import React, { useEffect, useState } from 'react';
 import { ColorType } from "@/components/ColorType";
 import ColorCard from "@/components/ColorCard";

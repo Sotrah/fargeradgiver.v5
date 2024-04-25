@@ -1,3 +1,6 @@
+// Disclaimer displays the disclaimer in a dedicated box
+
+
 import React from 'react';
 
 const DisclaimerBox = () => {

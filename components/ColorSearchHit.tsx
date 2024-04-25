@@ -6,5 +6,4 @@ export interface HitProps {
         hex: string;
         ncsCode: string;
         shortName: string;
-
 }
