@@ -104,7 +104,7 @@ export default function Home() {
                       <path className="cls-2" d="M770.41,62.06H756.63a2,2,0,0,0-1.54.88L688.2,177c-.67,1.13-.14,2.06,1.18,2.06h13.78a2,2,0,0,0,1.54-.89l66.89-114C772.26,63,771.72,62.06,770.41,62.06Z" transform="translate(-37.88 -62.06)"></path>
                   </svg>
                 </figure>
-                <input type="text" className="searchbar block w-full h-12 px-4 py-2 rounded-full border  bg-gray-50 focus:outline-none focus:border-blue-500 text-base" placeholder="Søk på jernia.no" />
+                <input type="text" className="searchbar block w-full h-12 px-4 py-2 rounded-full border pointer-events-none bg-gray-50 focus:outline-none focus:border-blue-500 text-base" placeholder="Søkebaren og toppdelen er bare et eksempel" />
                 <div className="dummy-button-container flex items-center">
                   <div className="dummy-button bg-gray-100 rounded-full"></div>
                   <div className="dummy-button bg-gray-100 rounded-full"></div>

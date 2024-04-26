@@ -15,9 +15,9 @@ const DisclaimerBox = () => {
             <div className="flex-grow ml-4 flex items-center">
                 <div className="text-xs">
                     <h5 className="leading-hd font-semibold tracking-hd hyphens-manual text-hd-5-m md:text-hd-5 text-text-700" style={{ overflowWrap: 'break-word' }}>
-                        Vi anbefaler å bestille en fargeprøve før man velger farge
+                        Fargenøyaktighet kan variere, visualiseringen er kun for å gi et inntrykk
                     </h5>
-                    <p className="leading-p text-p-xs mt-2">Farger vil som oftest avvike fra skjerm til vegg. Fargeopplevelsen kan også være forskjellig under ulike lysforhold. Glans og underlag kan påvirke fargenes utseende.</p>
+                    <p className="leading-p text-p-xs mt-2">Fargeopplevelsen kan være forskjellig under ulike lysforhold og farger vil som oftest avvike fra skjerm til vegg. Glans og underlag kan påvirke fargenes utseende. Vi anbefaler å bestille en fargeprøve før man velger farge.</p>
                 </div>
             </div>
         </div>
