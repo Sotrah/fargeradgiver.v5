@@ -1,7 +1,7 @@
 // ImageGridCard presents a grid display of all available images
 
 'use client';
-import CloudinaryWrapper from "./CldImage";
+import CldImage from "./CldImage";
 import React, { useState, useRef, useEffect } from 'react';
 import UploadButton from "../components/UploadButton";
 
@@ -57,8 +57,7 @@ const ImageGridCard: React.FC<{
     };
 
     const handleUploadSuccess = (result: string): void => {
-        
-        // This loops which slot to upload the next image to between the initial value and the max
+        // Always push new uploaded images to the front of the list
         const updatedImages = images
         updatedImages.unshift(result);
         setImages(updatedImages);
@@ -114,7 +113,7 @@ const ImageGridCard: React.FC<{
                         className={`rounded flex aspect-[4/3] items-center overflow-hidden relative border-[3px] ${selectedGridIndex === index ? 'border-gray-600' : 'hover:border-gray-400 border-transparent'}`}
                         onClick={() => handleImageClick(index)}
                     >
-                        <CloudinaryWrapper
+                        <CldImage
                             width={400}
                             height={300}
                             src={src}

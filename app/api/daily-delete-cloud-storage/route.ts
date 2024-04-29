@@ -1,3 +1,5 @@
+// This deletes all images tagged with 'colorchangesigned' from the Cloudinary storage and is scheduled to run daily as a cron job.
+
 import { v2 as cloudinary } from "cloudinary";
  
 cloudinary.config({

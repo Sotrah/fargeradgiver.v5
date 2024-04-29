@@ -1,4 +1,4 @@
-// ChosenColorInfo displays information about the selected color in a dedicated box
+// ChosenColorInfo displays information about the selected color in a dedicated box if a color is selected, or help text if no color is selected
 
 import React from 'react';
 import { ColorType } from './ColorType';

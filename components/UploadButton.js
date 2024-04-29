@@ -1,4 +1,5 @@
-// UploadButton integrates with Cloudinary's upload services using the CldUploadButton
+// UploadButton integrates with Cloudinary's upload services using the CldUploadButton, it renders the Cloudinary upload widget
+// Documented here: https://next.cloudinary.dev/clduploadbutton/basic-usage
 
 import { CldUploadButton } from 'next-cloudinary';
 import { useState } from 'react';
