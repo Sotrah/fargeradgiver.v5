@@ -1,7 +1,9 @@
+// MainImage displays the main image and includes a loading indicator
+
 import { ColorType } from './ColorType';
-import {ScaleLoader} from "react-spinners";
+import {ScaleLoader} from "react-spinners"; // A loading spinner
 import React, {useState} from "react";
-import {useSpinDelay} from "spin-delay";
+import {useSpinDelay} from "spin-delay"; // This controls when the loading spinner is shown to avoid flickering
 import CldImage from "../components/CldImage";
 
 const MainImage: React.FC<{
@@ -33,7 +35,7 @@ const MainImage: React.FC<{
                     </div>
                 </div>
                 {/* CldImage is documented here: https://next.cloudinary.dev/cldimage/configuration
-                        If there is an image and a selectedColor selected, transform it with Recolor */}
+                If there is an image and a selectedColor, transform it with Recolor */}
                 {selectedImage && selectedColor && (
                     <div className={`absolute top-0 left-0 w-full h-full flex justify-center items-center z-20 rounded ${showSpinner ? "opacity-0" : ""} `}>
                         <CldImage
@@ -50,6 +52,7 @@ const MainImage: React.FC<{
                         />
                     </div>
                 )}
+                {/* Always show the original image underneath the edited one */}
                 {selectedImage &&(
                     <div className={`${showSpinner ? "opacity-50" : ""} absolute top-0 left-0 w-full h-full flex justify-center items-center z-10 rounded `}>
                         <CldImage
@@ -69,7 +72,7 @@ const MainImage: React.FC<{
                         />
                     </div>
                 )}
-
+                {/* If no image is selected, show help text to user */}
                 <div className="flex justify-center items-center z-0 bg-gray-300 rounded aspect-[4/3]">
                     {!selectedImage &&(
                         <div>

@@ -1,3 +1,5 @@
+// This signs Cloudinary requests with the API secret and returns the signature to the client.
+
 import { v2 as cloudinary } from "cloudinary";
  
 cloudinary.config({

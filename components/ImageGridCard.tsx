@@ -1,5 +1,7 @@
+// ImageGridCard presents a grid display of all available images
+
 'use client';
-import CloudinaryWrapper from "./CldImage";
+import CldImage from "./CldImage";
 import React, { useState, useRef, useEffect } from 'react';
 import UploadButton from "../components/UploadButton";
 
@@ -19,20 +21,16 @@ const ImageGridCard: React.FC<{
             }
         };
 
-        // Legg til event listener hvis popup er vist
         if (showPopup) {
             document.addEventListener('mousedown', handleClickOutside);
         } else {
             document.removeEventListener('mousedown', handleClickOutside);
         }
 
-        // Fjern event listener når komponenten unmounts
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
     }, [showPopup]); // Avhengighet til showPopup slik at effekten kjører når tilstanden endres
-
-
 
     const [images, setImages] = useState<string[]>([
         'https://res.cloudinary.com/dv4ydb3qf/image/upload/v1713522064/jycc1koodetkfjvdcoky_cnhibb-600px_height_oyw2kz.jpg',
@@ -41,7 +39,6 @@ const ImageGridCard: React.FC<{
         'https://res.cloudinary.com/dv4ydb3qf/image/upload/v1713522070/dc3x1mvacxdq8qc7kk80_mxzxpo-600px_height_k8i9p1.jpg',
         'https://res.cloudinary.com/dv4ydb3qf/image/upload/v1713522067/aegvqdxc0i1hbsuksdcp_cmm97v-600px_height_zzwzas.png'
     ]);
-
 
     const handleImageClick = (clickedIndex: number): void => {
         if (clickedIndex === selectedGridIndex) {
@@ -57,18 +54,15 @@ const ImageGridCard: React.FC<{
                 element.scrollIntoView();
             }
         }
-
     };
 
-    // Function to handle the state update in the parent component
     const handleUploadSuccess = (result: string): void => {
-        
-        // This loops which slot to upload the next image to between the initial value and the max
+        // Always push new uploaded images to the front of the list
         const updatedImages = images
-        updatedImages.unshift(result); // Add the uploaded photo to the front of the images array
+        updatedImages.unshift(result);
         setImages(updatedImages);
         console.log(result);
-        handleImageClick(0); // "click" (select) the uploaded image
+        handleImageClick(0);
     };
 
     return (
@@ -81,9 +75,6 @@ const ImageGridCard: React.FC<{
                     <button 
                     className="cursor-pointer" 
                     onClick={() => setShowPopup(!showPopup)}
-                // Mouseover actions here if wanted in addition to click, just need to take away:
-                    // onMouseOver={() => setShowPopup(true)}
-                    // onMouseOut={() => setShowPopup(false)}
                     title="Tips til å ta gode bilder"
                     >
                         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-6 h-6">
@@ -115,7 +106,6 @@ const ImageGridCard: React.FC<{
                 </div>
             )}
 
-
             <div className="flex-auto grid auto-rows-max lg:grid-cols-1 grid-cols-3 gap-2 relative overflow-y-auto">
                 {images.map((src, index) => (
                     <button
@@ -123,7 +113,7 @@ const ImageGridCard: React.FC<{
                         className={`rounded flex aspect-[4/3] items-center overflow-hidden relative border-[3px] ${selectedGridIndex === index ? 'border-gray-600' : 'hover:border-gray-400 border-transparent'}`}
                         onClick={() => handleImageClick(index)}
                     >
-                        <CloudinaryWrapper
+                        <CldImage
                             width={400}
                             height={300}
                             src={src}
@@ -134,9 +124,7 @@ const ImageGridCard: React.FC<{
                         />
                     </button>
                 ))}
-                
             </div>
-
         </div>
     );
 }

@@ -1,3 +1,6 @@
+// UploadButton integrates with Cloudinary's upload services using the CldUploadButton, it renders the Cloudinary upload widget
+// Documented here: https://next.cloudinary.dev/clduploadbutton/basic-usage
+
 import { CldUploadButton } from 'next-cloudinary';
 import { useState } from 'react';
 
@@ -10,15 +13,15 @@ const UploadButton = ({ onUploadSuccess }) => {
             id="uploadButton"
             className='rounded flex-initial text-white text-xs w-20 h-10 lg:w-[3.75rem] xl:w-20 lg: h-8'
             style={{backgroundColor: '#255199' }}
-            onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#17386d'} // Endrer bakgrunnsfarge ved hover
-            onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#255199'} // Endrer tilbake til vanlig farge
+            onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#17386d'}
+            onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#255199'}
             uploadPreset="colorchangesigned"
             signatureEndpoint="/api/sign-cloudinary-params"
             onSuccess={(result, { widget }) => {
                 console.log(result?.info);
                 if (typeof result?.info === 'object' && result?.info !== null) {
                     setCloudinaryResult(result.info.url);
-                    onUploadSuccess(result.info.url); // Call the parent function with the result
+                    onUploadSuccess(result.info.url);
                 } else {
                     setCloudinaryResult(null);
                 }

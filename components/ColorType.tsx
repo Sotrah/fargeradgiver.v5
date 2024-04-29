@@ -1,3 +1,4 @@
+// Data structure for storing details about each color
 export interface ColorType{
     fullName: string;
     shortName: string;
@@ -6,8 +7,8 @@ export interface ColorType{
     hex: string;
     description: string | null;
     imageUrls: string[];
-    matchingColors: any; // Adjust the type as needed
-    shades: any; // Adjust the type as needed
+    matchingColors: any;
+    shades: any;
     collections: {
         code: string;
         name: string;

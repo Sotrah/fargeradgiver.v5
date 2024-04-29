@@ -1,3 +1,5 @@
+// RecentColorPicker manages and displays a grid of recently selected colors
+
 import React, { useEffect, useState } from 'react';
 import { ColorType } from "@/components/ColorType";
 import ColorCard from "@/components/ColorCard";
@@ -30,11 +32,11 @@ const RecentColorPicker: React.FC<{ selectedColor: ColorType | null, visibleModu
     const handleColorClick = (colorItem: ColorType) => {
         if (selectedColor && selectedColor.hex === colorItem.hex) {
             console.log('Deselecting color');
-            onColorSelect(null); // remove selected color
+            onColorSelect(null); // Remove selected color
             return false;
         }
         else {
-            onColorSelect(colorItem); // "Feed" the selected color to the parent component
+            onColorSelect(colorItem); // Feed the selected color to the parent component
             console.log('Selected color:', colorItem);
             return true;
         }

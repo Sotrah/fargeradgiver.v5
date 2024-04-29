@@ -7,16 +7,46 @@
   --background-start-rgb: 246, 249, 255;
   --background-end-rgb: 255, 255, 255;
   scroll-behavior: smooth;
-
 }
+#__next{
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  font-family: Inter,ui-sans-serif,system-ui,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
+  font-feature-settings: normal;
+  font-variation-settings: normal;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.bg-jernia-nettside{
+  background-color: rgb(246, 249, 255);
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+          to bottom,
+          transparent,
+          rgb(var(--background-end-rgb))
+  )
+  rgb(var(--background-start-rgb));
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
 /* Basestyling for flexbox layout */
 .main-flexbox {
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
 }
-
-/* For skjermer større enn 1024px */
+/* Flexbox for large screens */
 @media (min-width: 1024px) {
   .main-flexbox {
     flex-direction: row;
@@ -37,9 +67,7 @@
     max-height: 90vh;
   }
 }
-
-
-/* Tilpasser for mobile enheter */
+/* Flexbox for mobile */
 @media (max-width: 1023px) {
   .main-flexbox {
     flex-direction: column;
@@ -53,37 +81,23 @@
     width: 100%;
     gap: 0.75rem;
     overflow-y: auto;
-
   }
   .right-column {
    height: 50vh;
    min-height: 28rem;
   }
-
   .color-info-lg {
     display: none;
-    /*position: fixed;*/
-    /*bottom: 0;*/
-    /*background-color: white;*/
-    /*z-index: 10;*/
-    /*padding: 10px;*/
-    /*box-shadow: 0 -5px 5px -5px rgba(0,0,0,0.2);*/
-    /*margin-top: auto;*/
   }
   .color-info-sm {
     box-shadow: 0 -5px 5px -5px rgba(0,0,0,0.2);
     position: fixed;
     bottom: -15%;
     transition: bottom 0.3s ease-in-out;
-
   }
-
 }
 
-
-
-
-/* For skjermer større enn 1024px */
+/* Margins for large screens */
 @media (min-width: 1024px) {
   .main-container, .c-site-header__top .container {
     margin-left: auto;
@@ -93,7 +107,7 @@
     padding-right: 1rem;
   }
 }
-
+/* Margins for mobile */
 @media (max-width: 1023px) {
   .main-container, .c-site-header__top .container {
     margin-left: auto;
@@ -103,36 +117,20 @@
     padding-right: 15px;
   }
 }
-
+ /* Hero piece background image */
 .background-image-container {
   background-image: url('https://jernia-li4h9pufi-jernia.vercel.app/_next/static/media/desktop.4bafc749.svg');
   background-position: right;
   background-repeat: no-repeat;
   position: relative;
 }
+/* Hero piece background image for mobile */
 @media (max-width: 1023px) {
   .background-image-container {
     background-size: 60%;
   }
 }
-
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-          to bottom,
-          transparent,
-          rgb(var(--background-end-rgb))
-  )
-  rgb(var(--background-start-rgb));
-}
-
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-}
+ /* Jernia nav bar*/
 .c-site-header {
   background-color: #003065;
   position: relative;
@@ -140,14 +138,14 @@ body {
   align-items: center;
 }
 
+/* Navbar for mobile */
 @media (max-width: 1023px) {
   .header-container{
     display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
+  justify-content: center;
+  align-items: center;
   height: 126px;
   }
-
   .c-site-header__top {
     max-width: 720px;
     position: relative;
@@ -157,7 +155,6 @@ body {
     -ms-flex-align: center;
     align-items: center;
   }
-
   .container {
     padding-left: 15px;
     padding-right: 15px;
@@ -166,29 +163,31 @@ body {
     justify-content: space-between;
     gap: 15px;
   }
-
-  .cls-1{fill:white;}
-  .cls-2{fill:#fa8700;}
-
+  .cls-1{
+    fill:white;
+  }
+  .cls-2{
+    fill:#fa8700;
+  }
   .searchbar{
     order: 3;
     height: 40px;
   }
-
 }
+
+/* Dummy buttons for nav bar*/
 .dummy-button-container{
   width: 50%;
   display: flex;
   justify-content: flex-end;
   gap: 0.5em;
-  
 }
 .dummy-button{
-  
   height: 100%;
   aspect-ratio: 1;
 }
 
+/*Navbar for large screens*/
 @media (min-width: 1024px) {
   .c-site-header__top {
     background-color: #FFFFFF;
@@ -201,7 +200,6 @@ body {
     -ms-flex-align: center;
     align-items: center;
   }
-
   .container {
     height: 50px;
     margin-left: 30px;
@@ -213,16 +211,18 @@ body {
     justify-content: space-around;
     gap: 15px;
   }
-
-  .cls-1{fill:rgb(1, 67, 142);}
-  .cls-2{fill:#fa8700;}
-
+  .cls-1 {
+    fill:rgb(1, 67, 142);
+  }
+  .cls-2 {
+    fill:#fa8700;
+  }
   .jernia-navigation-container{
     height: 72px;
   }
 }
 
-/* Popupvindu med info */
+/* Popup-window with info for mobile */
 @media (max-width: 1024px) {
   .popup {
     top: 0;
@@ -230,7 +230,7 @@ body {
     width: 100px;
   }
 }
-
+/* Popup window with info for large screens */
 @media (min-width: 1024px) {
   .popup {
     top: 0;
@@ -239,8 +239,7 @@ body {
   }
 }
 
-
-/*Fargevelger tabs*/
+/* Colorpicker tabs */
 .tab-container {
   display: flex;
   justify-content: space-between;
@@ -248,14 +247,14 @@ body {
   text-align: justify;
   gap: 0.75em;
   background-color: white;
-  border-bottom: 2px solid #cccccc; /* Kontinuerlig grå linje */
+  border-bottom: 2px solid #cccccc;
 }
 .tab-button {
   position: relative;
   height: 2em; 
   font-weight: normal;
   color: #727272; /* Edited to meet WCAG requirements */
-  transition: all 0.3s ease; /* Gjør overgangene mykere */
+  transition: all 0.3s ease;
   display: flex;     
   justify-content: flex-start;     
   flex-direction: column;
@@ -263,74 +262,22 @@ body {
 .tab-button::after {
   content: '';
   position: absolute;
-  bottom: -2px; /* Juster dette for å kompensere for den vertikale forskjellen */
+  bottom: -2px;
   left: 0;
   right: 0;
   height: 3px;
-  background-color: transparent; /* Standard er gjennomsiktig */
+  background-color: transparent;
   transition: background-color 0.3s ease;
 }
 .tab-button.selected::after {
-  background-color: blue; /* Den valgte taben viser den blå linjen */
+  background-color: blue;
 }
 .tab-button.selected {
   font-weight: semibold;
   color: black;
 }
 
-
-.mm-page{
-  box-sizing: border-box;
-  position: relative;
-}
-.mm-slideout{
-  transition: -webkit-transform .4s ease;
-  transition: transform .4s ease;
-  transition: transform .4s ease, -webkit-transform .4s ease;
-  transition: transform .4s ease,-webkit-transform .4s ease;
-  z-index: 1;
-}
-#__next{
-  line-height: 1.5;
-  -webkit-text-size-adjust: 100%;
-  -moz-tab-size: 4;
-  -o-tab-size: 4;
-  tab-size: 4;
-  font-family: Inter,ui-sans-serif,system-ui,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
-  font-feature-settings: normal;
-  font-variation-settings: normal;
-  -webkit-tap-highlight-color: transparent;
-}
-
-.bg-jernia-farge{
-  background-color: rgb(205, 188, 148);
-}
-
-.bg-jernia-nettside{
-  background-color: rgb(246, 249, 255);
-}
-
-
-.bg-jernia-image {
-  background-image: url(https://jernia-etp3ndp86-jernia.vercel.app/_next/static/media/mobile.89ded607.svg);
-  background-position: right top;
-  background-repeat: no-repeat;
-  background-size: auto 200%;
-}
-#__next .h-\[calc\(100\%-32px\)\] {
-  height: 250%;
-}
-#__next .w-full {
-  width: 100%;
-}
-#__next .bg-primary-100 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(245, 249, 255/var(--tw-bg-opacity));
-}
-
-
-
-/*Tekst på valgt farge*/
+/* ChosenColorInfo text */
 .colorInfo {
   display: flex;
   flex-direction: column;
@@ -343,7 +290,7 @@ body {
 .colorCode {
   font-size: 0.625rem;
 }
-
+/* For medium sized screens with mobile view */
 @media (min-width: 600px) {
   .colorName {
     font-size: 1.125rem;
@@ -352,7 +299,7 @@ body {
     font-size: 1rem;
   }
 }
-
+/* For medium sized screens with desktop view */
 @media (min-width: 1024px) {
   .colorName {
     font-size: 0.875rem;
@@ -361,7 +308,7 @@ body {
     font-size: 0.75rem;
   }
 }
-
+/* For large screens */
 @media (min-width: 1292px) {
   .colorName {
     font-size: 1.125rem;
@@ -371,18 +318,18 @@ body {
   }
 }
 
-/*Høyde på fargevelgeren*/
+/* Height of the color picker */
 .colorPickerHeight{
 }
 
-/* Info-tekst på store skjermer */
+/* Main image info text for large screens */
 @media (min-width:1025px) {
   .mobile-text {
     display: none;
   }
 }
 
-/* Info-tekst på små skjermer */
+/* Main image info text for mobile */
 @media (max-width: 1024px) {
   .desktop-text {
     display: none;
@@ -418,7 +365,7 @@ body {
   outline: currentcolor solid medium !important;
 }
 
-/* Reset knapp for filtre*/
+/* Reset button for filters*/
 .reset-button {
   padding: 10px 20px;
   margin-top: 20px;
@@ -430,14 +377,13 @@ body {
   background-color: rgb(0 79 154/var(--tw-bg-opacity));
   --tw-text-opacity: 1 !important;
   color: rgb(255 255 255/ 1) !important;
-  /* Sentrerer knappen hvis den er alene */
+  /* Centers the button when alone */
   display: block;
   width: 80%;
   margin-left: auto;
   margin-right: auto;
-
 }
-
+/* Overwrite default algolia styling for accessibility and design */
 .ais-SearchBox-input {
   box-shadow: none !important;
   border: 2px solid #939393 !important; /* Changed to meet WCAG contrast requirements */
@@ -449,7 +395,6 @@ body {
 .ais-CurrentRefinements-delete:focus {
   outline: currentcolor solid medium !important;
 }
-
 .reset-button:hover {
   background-color: #e0e0e0; 
 }

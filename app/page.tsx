@@ -11,7 +11,6 @@ import {Search}  from "@/components/ColorSearch";
 import colours_dump from "colours_dump.json"
 import {HitProps} from "@/components/ColorSearchHit";
 import GetUrlColor from "@/components/GetUrlColor";
-import PromptRecolor from "@/components/PromptOptions"; 
 import ChosenColorInfo from "@/components/ChosenColorInfo";
 import MainImage from "@/components/MainImage";
 import DisclaimerBox from "@/components/Disclaimer";
@@ -28,23 +27,24 @@ export default function Home() {
   const [colors, setColors] = useState<ColorType[]>([]); 
   const [searchResults, setSearchResults] = useState<ColorType[]>([]);
   const[colorsAreLoaded, setColorsAreLoaded] = useState(false);
-  const [recolorOption, setRecolorOption] = useState("All the walls and every wall"); // Default value can be adjusted
+  const [recolorOption, setRecolorOption] = useState("All the walls and every wall");
 
 
   const handleResultsUpdate = (hits: HitProps[]) => {
     // Convert HitProps[] to ColorType[]
     const convertedResults = mapHitsToColorType(hits);
     if (searchResults.length !== convertedResults.length || !convertedResults.every((result, index) => result.code === searchResults[index]?.code)) {
-      setSearchResults(convertedResults); // Update state with converted results
+      setSearchResults(convertedResults);
       setColorsAreLoaded(true);
     }
   };   
 
+  // Load initial color data
   useEffect(() => {
     setColors(colours_dump);
   }, []);
 
-
+  // Handle image selection changes
   const handleImageSelect = (selectedImage: String | null) => {
     if (selectedImage != null) {
       setLoading(true);
@@ -54,6 +54,8 @@ export default function Home() {
     }
     setSelectedImage(selectedImage)
   }
+
+  // Handle color selection changes
   const handleColorSelect = (selectedColor: ColorType | null) => {
     if (selectedColor != null && selectedImage != null) {
         setLoading(true);
@@ -63,7 +65,6 @@ export default function Home() {
     }
     setSelectedColor(selectedColor)
   }
-
 
 
   return (
@@ -78,8 +79,7 @@ export default function Home() {
         
       <div className="bg-jernia-nettside new-style page-proxiedContentWrapper pageType-ContentPage template-pages-layout-landingLayout2Page pageLabel-proxiedContentWrapper smartedit-page-uid-proxiedContentWrapper smartedit-page-uuid-eyJpdGVtSWQiOiJwcm94aWVkQ29udGVudFdyYXBwZXIiLCJjYXRhbG9nSWQiOiJjbkNvbnRlbnRDYXRhbG9nIiwiY2F0YWxvZ1ZlcnNpb24iOiJPbmxpbmUifQ== smartedit-catalog-version-uuid-cnContentCatalog/Online language-no">
 
-        {/*Navbar*/}
-        
+        {/* Navbar */}
         <div className="c-site-header">
           <div className="header-container">
             <div className="c-site-header__top text-white text-2xl">
@@ -104,23 +104,20 @@ export default function Home() {
                       <path className="cls-2" d="M770.41,62.06H756.63a2,2,0,0,0-1.54.88L688.2,177c-.67,1.13-.14,2.06,1.18,2.06h13.78a2,2,0,0,0,1.54-.89l66.89-114C772.26,63,771.72,62.06,770.41,62.06Z" transform="translate(-37.88 -62.06)"></path>
                   </svg>
                 </figure>
-                <input type="text" className="searchbar block w-full h-12 px-4 py-2 rounded-full border  bg-gray-50 focus:outline-none focus:border-blue-500 text-base" placeholder="Søk på jernia.no" />
+                <input type="text" className="searchbar block w-full h-12 px-4 py-2 rounded-full border pointer-events-none bg-gray-50 focus:outline-none focus:border-blue-500 text-base" placeholder="Søkebaren og toppdelen er bare et eksempel" />
                 <div className="dummy-button-container flex items-center">
                   <div className="dummy-button bg-gray-100 rounded-full"></div>
                   <div className="dummy-button bg-gray-100 rounded-full"></div>
                   <div className="dummy-button bg-gray-100 rounded-full"></div>
                   <div className="dummy-button bg-gray-100 rounded-full"></div>
-
-                  </div>
+                </div>
               </div>
-              
             </div>
-            <div className="jernia-navigation-container">
-            </div>
+            <div className="jernia-navigation-container"/>
           </div>
         </div>
 
-        {/*Overskrift og info*/}
+        {/* Headline and info */}
         <div className="main-container mx-auto px-4">
           <div className="text-center lg:my-8 my-4 background-image-container">
             <h1 className="text-2xl lg:text-3xl font-bold text-gray-800 text-left">Visualiseringsverktøy</h1>
@@ -129,49 +126,43 @@ export default function Home() {
                 Etter at bildet er lastet opp kan du enkelt endre veggfargen til den fargen du ønsker.</p>
           </div>
 
-            {/*Div-container til hovedelementene*/}
-              {/* Added role of main to meet WCAG requirements */}
-            <div role="main" className="main-flexbox">
+            {/* Container for the main elements */}
+            <div role="main" className="main-flexbox"> {/* Added role of main to meet WCAG requirements */}
 
-                {/*Bildevelger*/}
+                {/* Image picker */}
                 <div role="bildevelger" className="left-column lg:order-1 relative rounded bg-white p-3 ">
                     <ImageGridCard selectedImage={selectedImage}
                                    onImageSelect={handleImageSelect}/>
                 </div>
 
-                {/*Midterste kolonne desktop*/}
+                {/* The middle column for desktop */}
                 <div
                     className="middle-column lg:order-2 relative w-full h-full flex flex-col items-stretch justify-center" id="middle-column">
 
-                    {/*Hovedbildet  */}
+                    {/* Main image */}
                     <div role="hovedbildet" className="middle-column order-2 lg:order-1">
-
                         <MainImage selectedColor={selectedColor} selectedImage={selectedImage} loading={loading}
                                    setLoading={setLoading} recolorOption={recolorOption} formattedHex={formattedHex}/>
-
                     </div>
 
-                    {/*Info om valgt farge desktop*/}
+                    {/* Chosen color info for desktop */}
                     <div
-                      role="info om valgt fargen"
+                      role="info om valgt farge"
                         className="color-info-lg order-3 lg:order-2 rounded bg-white flex justify-center items-center p-3 max-h-36">
-
                         <ChosenColorInfo selectedColor={selectedColor} formattedHex={formattedHex}/>
                     </div>
 
-                    {/*disclaimer*/}
+                    {/* Disclaimer */}
                     <div role="disclaimer" className="order-1 lg:order-3">
                         <DisclaimerBox/>
                     </div>
                 </div>
 
-
-                {/*Siste kolonne på desktopview*/}
-
+                {/* Last column for desktop */}
                 <div role="fargevelger" className="flex flex-col right-column lg:order-3 relative w-full h-auto bg-white rounded p-3 " id="right-column">
                     <span className="text-md font-bold mb-4 hidden lg:block">Velg farge</span>
 
-                    {/*Tabs for fargevalg*/}
+                    {/* Tabs for colorpicker */}
                     <ul role="tablist" aria-label="Fargevalg tabber"
                       className="tab-container text-sm">
                       <li role="presentation">
@@ -197,8 +188,7 @@ export default function Home() {
                       </li>
                     </ul>
 
-                    {/*Søkebar og Fargevelger*/}
-
+                    {/* Searchbar and colorpicker */}
                     <div
                         className={`${visibleModule === "modul2" ? "" : "hidden"} grow flex flex-col  rounded pt-4`}>
                         <Search onResultsUpdate={handleResultsUpdate}/>
@@ -207,27 +197,26 @@ export default function Home() {
                                      colors={searchResults}/>
                     </div>
 
-                    {/*Nylig brukte farger*/}
+                    {/* Recently used colors */}
                     <div
                         className={`${visibleModule === "modul3" ? "" : "hidden"} grow flex flex-col  rounded pt-2`}>
                         <RecentColorPicker onColorSelect={handleColorSelect} selectedColor={selectedColor}
                                            visibleModule={visibleModule}/>
                     </div>
 
-                    {/*Favorittfarger*/}
+                    {/* Favorite colors*/}
                     <div
                         className={`${visibleModule === "modul4" ? "" : "hidden"} grow flex flex-col  rounded pt-2`}>
                         <FavoriteColorPicker onColorSelect={handleColorSelect} selectedColor={selectedColor}
                                              favoriteColors={favoriteColors}/>
                     </div>
-
                 </div>
 
             </div>
         </div>
 
-          {/*Info om valgt farge på mobil*/}
-          <div role="info om valgt fargen på mobil"
+          {/* Chosen color info for mobile */}
+          <div role="info om valgt farge på mobil"
               className={`${(selectedImage || selectedColor) ? "!bottom-[0px]" : ""} color-info-sm lg:hidden rounded bg-white flex justify-center z-50 items-center p-3 max-h-36 w-full`}>
               <ChosenColorInfo selectedColor={selectedColor} formattedHex={formattedHex}/>
           </div>
