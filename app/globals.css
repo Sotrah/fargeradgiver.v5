@@ -227,7 +227,7 @@ body {
   .popup {
     top: 0;
     right: 0 !important;
-    width: 100px;
+    width: 100%;
   }
 }
 /* Popup window with info for large screens */

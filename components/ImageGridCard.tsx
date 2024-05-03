@@ -91,7 +91,7 @@ const ImageGridCard: React.FC<{
                     <div
                         ref={popupRef}
                         className="popup absolute bg-white p-4 border rounded shadow-lg z-50"
-                        style={{zIndex: 1000, width: '350px'}}
+                        style={{zIndex: 1000}}
                     >
                     <div className="flex justify-end">
                         <button onClick={() => setShowPopup(false)} className="text-lg absolute">×</button>
