@@ -30,7 +30,7 @@ const ImageGridCard: React.FC<{
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
-    }, [showPopup]); // Avhengighet til showPopup slik at effekten kjører når tilstanden endres
+    }, [showPopup]); // Dependency to showPopup so the effect runs when the state changes
 
     const [images, setImages] = useState<string[]>([
         'https://res.cloudinary.com/dv4ydb3qf/image/upload/v1713522064/jycc1koodetkfjvdcoky_cnhibb-600px_height_oyw2kz.jpg',
