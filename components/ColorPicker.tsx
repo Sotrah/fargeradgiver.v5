@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { ColorType } from "@/components/ColorType";
 import ColorCard from "@/components/ColorCard";
 
+//Declares props
 const ColorPicker: React.FC<{
     selectedColor: ColorType | null,
     onColorSelect: (color: ColorType | null) => void,
@@ -13,6 +14,7 @@ const ColorPicker: React.FC<{
     const [displayCount, setDisplayCount] = useState(30);
     const loaderRef = useRef<HTMLDivElement>(null);
 
+//Event handler
     const handleColorClick = (colorItem: ColorType) => {
         if (selectedColor && selectedColor.hex === colorItem.hex) {
             console.log('Deselecting color');
@@ -20,11 +22,12 @@ const ColorPicker: React.FC<{
             return false;
         } else {
             onColorSelect(colorItem);
-            console.log('Selected color:', colorItem);
+            console.log('Selected color:', colorItem.shortName);
             return true;
         }
     };
 
+//Event handler
     const handleScroll = useCallback((event: Event) => {
         const target = event.target as HTMLDivElement;
         const { scrollTop, scrollHeight, clientHeight } = target;
@@ -35,6 +38,7 @@ const ColorPicker: React.FC<{
         }
     }, [displayCount, colors.length]);
 
+//Scroll event listener, ensures that the latest version of "handleScroll" is used when it changes.
     useEffect(() => {
         const div = loaderRef.current;
         if (div) {

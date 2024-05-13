@@ -37,7 +37,7 @@ const RecentColorPicker: React.FC<{ selectedColor: ColorType | null, visibleModu
         }
         else {
             onColorSelect(colorItem); // Feed the selected color to the parent component
-            console.log('Selected color:', colorItem);
+            console.log('Selected color:', colorItem.shortName);
             return true;
         }
     };

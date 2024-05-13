@@ -14,6 +14,7 @@ interface CustomResultsProps{
     onResultsUpdate: (hits: HitProps[]) => null;
 }
 
+//Watches for changes in searhResults, when changes happens, triggers onResultsUpdate.
 const CustomResultsComponent: React.FC<CustomResultsProps> = ({searchResults, onResultsUpdate }) => {
     useEffect(() => {
         if (searchResults && searchResults.hits.length > 0) {
@@ -24,6 +25,7 @@ const CustomResultsComponent: React.FC<CustomResultsProps> = ({searchResults, on
     return null;
 };
 
+//Algolia setup
 const CustomResults = connectStateResults(CustomResultsComponent);
 const searchClient = algoliasearch('NOLK3JAMLX', 'fcde24d65b04aa23920ceb878b4362d9'); //Search-Only API key, low security risk
 
@@ -33,6 +35,7 @@ interface SearchProps {
 
 var currentRefinements: any[] = [];
 
+//Removes the label from tagged filters, and replaces "/^[^:]+: /" with space
 const transformItems: CurrentRefinementsProps['transformItems'] = (items) => {
     currentRefinements = items;
     return items.map(item => ({
@@ -40,6 +43,8 @@ const transformItems: CurrentRefinementsProps['transformItems'] = (items) => {
         label: item.label.replace(/^[^:]+: /, ''),
     }))
 };
+
+//
 export const Search: React.FC<SearchProps> = ({ onResultsUpdate }) => {
     const [isCollapsed, setIsCollapsed] = useState(true);
 
@@ -68,7 +73,7 @@ export const Search: React.FC<SearchProps> = ({ onResultsUpdate }) => {
 
     return (
         <InstantSearch searchClient={searchClient} indexName="colours_dump">
-            <Configure hitsPerPage={500}/>
+            <Configure hitsPerPage={1000}/>
             <CustomResults onResultsUpdate={onResultsUpdate}/>
 
             <div className="grid grid-cols-3 gap-2">
